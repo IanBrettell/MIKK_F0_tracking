@@ -1,0 +1,26 @@
+####################
+# Config files
+####################
+samples_file:
+    config/F0_samples.txt
+####################
+# Parameters
+####################
+
+####################
+# Locations
+####################
+raw_data_dir:
+    /nfs/ftp/private/indigene_ftp/upload/behaviour/transfer/20191111_panel_1/all_to_analyse
+working_dir:
+    /hps/nobackup/birney/users/ian/MIKK_F0_tracking
+data_store_dir:
+    /nfs/research/birney/users/ian/MIKK_F0_tracking
+####################
+# Containers
+####################
+opencv:
+    /hps/software/users/birney/ian/containers/opencv_4.5.1.sif
+
+
+

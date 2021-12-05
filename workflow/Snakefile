@@ -1,0 +1,13 @@
+include: "rules/00_common.smk"
+
+##### Target rules #####
+
+rule all:
+    input:
+
+
+################
+
+##### Modules #####
+
+include: "rules/01_pre-processing.smk"
