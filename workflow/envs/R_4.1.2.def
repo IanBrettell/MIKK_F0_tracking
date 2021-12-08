@@ -1,0 +1,12 @@
+Bootstrap: docker
+From: rocker/tidyverse:4.1.2
+
+%post
+    # Install Ubuntu packages required for R packages
+    apt update
+    apt install -y libbz2-dev libmagick++-dev
+
+    # Install CRAN packages
+    install2.r --error \
+        magick
+    
