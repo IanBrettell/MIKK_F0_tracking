@@ -4,9 +4,15 @@ include: "rules/00_common.smk"
 
 rule all:
     input:
+#####################
+# 01_pre-processing
+#####################
+# copy_videos
+        expand(os.path.join(config["working_dir"], "raw_videos/{sample}.avi"),
+                sample = samples["sample"]
+        )
 
-
-################
+#####################
 
 ##### Modules #####
 

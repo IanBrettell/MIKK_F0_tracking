@@ -2,7 +2,7 @@
 # Config files
 ####################
 samples_file:
-    config/F0_samples.txt
+    config/samples.csv
 ####################
 # Parameters
 ####################
