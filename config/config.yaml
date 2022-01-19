@@ -10,6 +10,8 @@ samples_file:
 ####################
 # Locations
 ####################
+repo_dir:
+    /hps/software/users/birney/ian/repos/MIKK_F0_tracking
 raw_data_dir:
     /nfs/ftp/private/indigene_ftp/upload/behaviour/transfer/20191111_panel_1/all_to_analyse
 working_dir:
@@ -20,7 +22,7 @@ data_store_dir:
 # Containers
 ####################
 opencv:
-    /hps/software/users/birney/ian/containers/opencv_4.5.1.sif
+    /hps/nobackup/birney/users/ian/containers/MIKK_F0_tracking/opencv_4.5.1.sif
 
 
 

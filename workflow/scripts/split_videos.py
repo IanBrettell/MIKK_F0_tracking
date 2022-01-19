@@ -7,25 +7,37 @@ import cv2 as cv
 import os
 import sys
 
+# Get variables
+
+## Debugging
+SAMPLES_FILE = "config/samples.csv"
+ASSAY = "open_field"
+
+## True
+IN_FILE = snakemake.input.video
+SAMPLES_FILE = snakemake.input.samples_file
+SAMPLE = snakemake.params.sample
+ASSAY = snakemake.params.assay
+
 # Read samples_file
 
-samples_df = pd.read_csv(snakemake.params.samples_file, comment="#", skip_blank_lines=True, index_col=0)
+samples_df = pd.read_csv(SAMPLES_FILE, comment="#", skip_blank_lines=True, index_col=0)
 
 ## Get start and end frames
 
-if snakemake.wildcards.assay == "open_field":
-    start = int(samples_df.loc[snakemake.wildcards.sample, "of_start"])
-    end = int(samples_df.loc[snakemake.wildcards.sample, "of_end"])
-elif snakemake.wildcards.assay == "novel_object":
-    start = int(samples_df.loc[snakemake.wildcards.sample, "no_start"])
-    end = int(samples_df.loc[snakemake.wildcards.sample, "no_end"])
+if ASSAY == "open_field":
+    start = int(samples_df.loc[SAMPLE, "of_start"])
+    end = int(samples_df.loc[SAMPLE, "of_end"])
+elif ASSAY == "novel_object":
+    start = int(samples_df.loc[SAMPLE, "no_start"])
+    end = int(samples_df.loc[SAMPLE, "no_end"])
 
 # Get crop adjustment values
 
-adj_top = int(samples_df.loc[snakemake.wildcards.sample, "adj_top"])
-adj_bottom = int(samples_df.loc[snakemake.wildcards.sample, "adj_bottom"])
-adj_left = int(samples_df.loc[snakemake.wildcards.sample, "adj_left"])
-adj_right = int(samples_df.loc[snakemake.wildcards.sample, "adj_right"])
+adj_top = int(samples_df.loc[SAMPLE, "adj_top"])
+adj_bottom = int(samples_df.loc[SAMPLE, "adj_bottom"])
+adj_left = int(samples_df.loc[SAMPLE, "adj_left"])
+adj_right = int(samples_df.loc[SAMPLE, "adj_right"])
 
 # Get key variables
 in_file = snakemake.input[0]
@@ -56,22 +68,22 @@ test_line = meta_list[3]
 tank_side = meta_list[4]
 
 # Get bounding box coords for target quadrant
-if quadrant == 'q1':
+if QUADRANT == 'q1':
     top = 0
     bottom = round(((hei - 1) / 2) + adj_bottom)
     left = round(((wid - 1) / 2) + adj_left)
     right = wid - 1
-elif quadrant == 'q2':
+elif QUADRANT == 'q2':
     top = 0
     bottom = round(((hei - 1) / 2) + adj_bottom)
     left = 0
     right = round(((wid - 1) / 2) + adj_right)
-elif quadrant == 'q3':
+elif QUADRANT == 'q3':
     top = round(((hei - 1) / 2) + adj_top)
     bottom = hei - 1
     left = 0
     right = round(((wid - 1) / 2) + adj_right)
-elif quadrant == 'q4':
+elif QUADRANT == 'q4':
     top = round(((hei - 1) / 2) + adj_top)
     bottom = hei - 1
     left = round(((wid - 1) / 2) + adj_left)
@@ -97,9 +109,9 @@ while i in range(start,end):
     if not ret:
         print("Can't receive frame (stream end?). Exiting ...")
         break
-    # Flip if tank side is "R"
-    if tank_side == 'R':
-        frame = cv.rotate(frame, cv.ROTATE_180)
+#    # Flip if tank side is "R"
+#    if tank_side == 'R':
+#        frame = cv.rotate(frame, cv.ROTATE_180)
     # Crop frame
     frame = frame[top:bottom, left:right]
     # Write frame

@@ -1,8 +1,8 @@
 sample,date,time,tank_side,of_start,of_end,no_start,no_end,fps,adj_top,adj_bottom,adj_left,adj_right,of_video_length,no_video_length,intensity_floor,intensity_ceiling,area_floor,area_ceiling,cab_coords_of_q1,cab_coords_of_q2,cab_coords_of_q3,cab_coords_of_q4,cab_coords_no_q1,cab_coords_no_q2,cab_coords_no_q3,cab_coords_no_q4
-20191111_1527_5-1_L_A,20191111,1527,L,1905,20603,21373,39778,29,0,0,0,0,18698,18405,0,155,80,200,Right,Left,Left,Top,Left,Right,Top,Top
+20191111_1527_5-1_L_A,20191111,1527,L,1905,20603,21373,39778,29,-3,-2,0,-1,18698,18405,0,155,80,200,Right,Left,Left,Top,Left,Right,Top,Top
 20191111_1558_10-1_L_A,20191111,1558,L,2209,20705,21495,39804,29,0,0,0,0,18496,18309,0,155,80,200,Left,Top,Right,Right,Left,Top,Bottom,Left
 20191111_1627_11-1_L_A,20191111,1627,L,2938,21312,21961,40236,30,0,0,0,0,18374,18275,0,155,80,200,Bottom,Left,Bottom,Right,Right,Bottom,Top,Top
-20191111_1655_11-2_L_A,20191111,1655,L,2047,20320,21211,39326,29,0,0,0,0,18273,18115,0,155,80,200,Top,Left,Bottom,Bottom,Bottom,Right,Top,Right
+20191111_1655_11-2_L_A,20191111,1655,L,2047,20320,21211,39326,29,-10,0,0,-3,18273,18115,0,155,80,200,Top,Left,Bottom,Bottom,Bottom,Right,Top,Right
 20191111_1724_iCab_L_A,20191111,1724,L,2371,20583,21272,44444,29,0,0,0,0,18212,23172,0,155,80,200,NA,NA,NA,NA,NA,NA,NA,NA
 20191112_0948_4-2_L_A,20191112,948,L,2576,21448,22051,40327,29,0,0,0,0,18872,18276,0,155,80,200,Top,Left,Right,Right,Bottom,Bottom,Top,Top
 20191112_1025_13-2_L_A,20191112,1025,L,2078,20409,21080,39207,30,0,0,0,0,18331,18127,0,155,80,200,Right,Bottom,Right,Top,Bottom,Top,Bottom,Bottom

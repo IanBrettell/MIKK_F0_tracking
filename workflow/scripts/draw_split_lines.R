@@ -1,6 +1,6 @@
 # Get variables
 
-IN_VIDEO = "/nfs/ftp/private/indigene_ftp/upload/behaviour/transfer/20191111_panel_1/all_to_analyse/20191120_1233_94-1_L_C.avi"
+IN_VIDEO = "/hps/nobackup/birney/users/ian/MIKK_F0_tracking/raw_videos/20191120_1233_94-1_L_C.avi"
 SAMPLES_FILE = "config/samples.csv"
 TARGET_SAMPLE = "20191120_1233_94-1_L_C"
 
@@ -20,13 +20,27 @@ sink(log, type = "message")
 
 library(tidyverse)
 library(magick)
+library(av)
 
 # Read in samples file
 
 samples_df = readr::read_csv(SAMPLES_FILE)
-sample_name = snakemake@params[["sample_name"]]
 
-# Get lane coords
+# Get variables
+META_ROW = samples_df %>% 
+  dplyr::filter(sample == TARGET_SAMPLE) 
+
+## frame rate
+FPS = META_ROW %>% 
+  dplyr::pull(fps)
+
+# Read in video
+
+video = magick::image_read_video(IN_VIDEO, fps = FPS)
+
+# Get split coordinates
+
+## Get height and 
 
 ## Total lanes in video
 lanes_n = samples_df %>%

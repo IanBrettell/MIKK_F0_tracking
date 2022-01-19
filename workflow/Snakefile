@@ -10,7 +10,10 @@ rule all:
 # copy_videos
         expand(os.path.join(config["working_dir"], "raw_videos/{sample}.avi"),
                 sample = samples["sample"]
-        )
+        ),
+# set_split_coords
+        expand(os.path.join(config["working_dir"], "results/split_coord_images/{sample}.jpg"),
+                sample = samples["sample"][1])
 
 #####################
 
