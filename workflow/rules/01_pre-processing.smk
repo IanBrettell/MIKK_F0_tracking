@@ -7,7 +7,8 @@ rule copy_videos:
         os.path.join(config["working_dir"], "logs/copy_videos/{sample}.log"),
     shell:
         """
-        cp {input} {output}
+        cp {input} {output} \
+            2> {log}
         """
 
 rule set_split_coords:
@@ -15,15 +16,17 @@ rule set_split_coords:
         video = os.path.join(config["working_dir"], "raw_videos/{sample}.avi"),
         samples_file = config["samples_file"]
     output:
-        out = os.path.join(config["working_dir"], "results/split_coord_images/{sample}.jpg")
+        os.path.join(config["working_dir"], "results/split_coord_images/{sample}.png"),
     log:
-        os.path.join(config["working_dir"], "logs/set_split_coords/{sample}.log"),
+        os.path.join(config["working_dir"], "logs/set_split_coords/{sample}.log")
     params:
         sample = "{sample}"
     container:
         config["opencv"]
+    #conda:
+    #    "../envs/opencv_3.4.2.yml"
     script:
-        "/hps/software/users/birney/ian/repos/MIKK_F0_tracking/workflow/scripts/set_split_coords.py" 
+        "../scripts/set_split_coords.py"
 
 rule split_videos:
     input:

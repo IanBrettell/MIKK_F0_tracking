@@ -12,7 +12,7 @@ rule all:
                 sample = samples["sample"]
         ),
 # set_split_coords
-        expand(os.path.join(config["working_dir"], "results/split_coord_images/{sample}.jpg"),
+        expand(os.path.join(config["working_dir"], "results/split_coord_images/{sample}.png"),
                 sample = samples["sample"][1])
 
 #####################

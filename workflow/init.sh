@@ -9,7 +9,7 @@
 
 ssh codon
 module load singularity-3.7.0-gcc-9.3.0-dp5ffrp
-bsub -q datamover -M 20000 -Is bash
+bsub -M 20000 -Is bash
 cd /hps/software/users/birney/ian/repos/MIKK_F0_tracking
 conda activate snakemake_6.12.1
 snakemake \
