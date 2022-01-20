@@ -14,17 +14,15 @@ rule copy_videos:
 rule set_split_coords:
     input:
         video = os.path.join(config["working_dir"], "raw_videos/{sample}.avi"),
-        samples_file = config["samples_file"]
+        samples_file = config["samples_file"],
     output:
-        os.path.join(config["working_dir"], "results/split_coord_images/{sample}.png"),
+        fig = "results/split_coord_images/{sample}.png",
     log:
         os.path.join(config["working_dir"], "logs/set_split_coords/{sample}.log")
     params:
         sample = "{sample}"
     container:
         config["opencv"]
-    #conda:
-    #    "../envs/opencv_3.4.2.yml"
     script:
         "../scripts/set_split_coords.py"
 
