@@ -14,13 +14,13 @@ rule copy_videos:
 rule set_split_coords:
     input:
         video = os.path.join(config["working_dir"], "raw_videos/{sample}.avi"),
-        samples_file = config["samples_file"],
     output:
         fig = "results/split_coord_images/{sample}.png",
     log:
         os.path.join(config["working_dir"], "logs/set_split_coords/{sample}.log")
     params:
-        sample = "{sample}"
+        sample = "{sample}",
+        samples_file = lambda wildcards: config["samples_file"]
     container:
         config["opencv"]
     script:
