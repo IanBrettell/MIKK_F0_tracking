@@ -28,12 +28,16 @@ rule set_split_coords:
 
 rule split_videos:
     input:
-        video = os.path.join(config["raw_data_dir"], "{sample}.avi"),
-        samples_file = config["samples_file"]
+        rules.copy_videos.output,
     output:
-        os.path.join(config["data_store_dir"], "split/{assay}/{sample}_{quadrant}_{assay}.mp4")
+        os.path.join(config["data_store_dir"], "split/{assay}/{sample}_{quadrant}.mp4"),
+    log:
+        os.path.join(config["working_dir"], "logs/split_videos/{assay}/{sample}/{quadrant}.log"),
     params:
-        assay = "{assay}"
+        sample = "{sample}",
+        assay = "{assay}",
+        quadrant = "{quadrant}",
+        samples_file = lambda wildcards: config["samples_file"]
     container:
         config["opencv"]
     script:

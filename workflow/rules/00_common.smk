@@ -12,4 +12,11 @@ import os
 
 configfile: "config/config.yaml"
 
-samples = pd.read_csv(config["samples_file"], comment = '#')
+# Read in samples file
+samples_df = pd.read_csv(config["samples_file"], comment = '#')
+
+# Set variables
+
+SAMPLES = samples_df["sample"]
+ASSAYS = ["open_field", "novel_object"]
+QUADRANTS = ["q1", "q2", "q3", "q4"]
