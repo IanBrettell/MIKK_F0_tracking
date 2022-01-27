@@ -1,0 +1,86 @@
+[DEBUG   ] confapp.settings_manager                 + SETTINGS: local_settings                    confapp.settings_[DEBUG   ] confapp.settings_manager                 + SETTINGS: pyforms.settings confapp.settings_manager - DEBUG -[DEBUG   ] confapp.settings_manager                 + SETTINGS: h5py._conv - DEBUG - Creating converter from 7 to 5[h5py._conv - DEBUG - Creating converter from 5 to 7
+h5py._conv - DEBUG - Creating converter from 7 to 5
+h5py._conv - DEBUG - Creating converter from 5 to 7
+idtrackerai_app.base_idtrackerai - INFO - TENSORFLOW DEVICES: [_DeviceAttributes(/job:localhost/replica:0/task:0/device:CPU:0, CPU, 268435456, 15490244242436437963), _DeviceAt[INFO    ] idtrackerai_app.base_idtrackerai         TENSORFLOW DEVICES: [_DeviceAttributes(/job:localhos/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - --------- LOADING TERMINAL PARAMS ---------
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                       Session]: [20191111_1527_5-1_L_A_q1]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                         Video]: [/nfs/research/birney/users/ian/MIKK_F0_tracking/split/open_field/2019111[DEBUG   ] /opt/conda/l/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [Video file. Note: overwrite the _video parameter defined in the json. Nice to have to execute the applicati[DEBUG   ] /opt/conda/lib/python3.6/s/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                     Apply ROI]: [False]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                           ROI]: [None]
+__main__.video - DEBUG - Video object init
+__main__.video - DEBUG - Video(open_multiple_files=False)
+__main__.py_utils - INFO - Setting MKL library to use single thread
+__main__.segmentation_utils - DEBUG - one single video, computing bkg in parallel from single video
+__main__.segmentation_utils - DEBUG - Finished parallel loop for bkg subtraction
+__main__.py_utils - INFO - Setting MKL library to use multiple threads
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [           Subtract background]: [True]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [            Check segmentation]: [False]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [          Resolution reduction]: [1.0]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [          Intensity thresholds]: [[0, 200]]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [               Area thresholds]: [[150, 60000]]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [             Tracking interval]: [[0, 18698]]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [             Number of animals]: [2.0]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [            Tracking intervals]: [None]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                      Multiple]: [False]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [      Track without identities]: [False]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - --------- END LOADING TERMINAL PARAMS ---------
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - --------- FIELDS FINAL VALUES ---------
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                      _session]: [20191111_1527_5-1_L_A_q1]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                        _video]: [/nfs/research/birney/users/ian/MIKK_F0_tracking/split/open_field/20191111_1527_5-1_L_A_q1.mp4]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                   _video_path]: [None]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                     _applyroi]: [False]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                          _roi]: [None]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                        _bgsub]: [True]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                     _chcksegm]: [False]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                    _resreduct]: [1.0]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                    _intensity]: [[0, 200]]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                         _area]: [[150, 60000]]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                        _range]: [[0, 18698]]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                       _nblobs]: [2.0]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                     _progress]: [None]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                     _rangelst]: [None]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [               _multiple_range]: [False]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - [                       _no_ids]: [False]
+/opt/conda/lib/python3.6/site-packages/pyforms_terminal/basewidget.py - DEBUG - --------- END FIELDS FINAL VALUES ---------
+__main__.video - DEBUG - Video object init
+__main__.video - DEBUG - Video(open_multiple_files=False)
+__main__.video - INFO - the folder /nfs/research/birney/users/ian/MIKK_F0_tracking/split/open_field/session_20191111_1527_5-1_L_A_q1 has been created
+idtrackerai_app.base_idtrackerai - DEBUG - create Chosen_Video
+__main__.video - DEBUG - Video object init
+__main__.video - DEBUG - Video(open_multiple_files=False)
+idtrackerai_app.base_idtrackerai - DEBUG - before init PreprocessingPreviewAPI
+idtrackerai_app.base_idtrackerai - DEBUG - pre object: <idtrackerai.preprocessing_preview_api.PreprocessingPreviewAPI object at 0x14567c085390>
+idtrackerai_app.base_idtrackerai - DEBUG - call: init_preview
+idtrackerai.preprocessing_preview_api - DEBUG - init_preview
+idtrackerai.preprocessing_preview_api - DEBUG - init_preproc_parameters
+idtrackerai.preprocessing_preview_api - DEBUG - init_segment_zero
+idtrackerai_app.base_idtrackerai - DEBUG - call: init_preproc_parameters
+idtrackerai.preprocessing_preview_api - DEBUG - init_preproc_parameters
+idtrackerai_app.base_idtrackerai - DEBUG - call: segment
+idtrackerai.preprocessing_preview_api - DEBUG - segment
+idtrackerai.preprocessing_preview_api - DEBUG - segment 1
+idtrackerai.preprocessing_preview_api - DEBUG - segment 2
+__main__.video - INFO - saving video object in /nfs/research/birney/users/ian/MIKK_F0_tracking/split/open_field/session_20191111_1527_5-1_L_A_q1/video_object.npy
+__main__.video - DEBUG - Video.save(open_multiple_files=False)
+__main__.video - INFO - the folder /nfs/research/birney/users/ian/MIKK_F0_tracking/split/open_field/session_20191111_1527_5-1_L_A_q1/segmentation_data has been created
+__main__.video - INFO - the folder /nfs/research/birney/users/ian/MIKK_F0_tracking/split/open_field/session_20191111_1527_5-1_L_A_q1/identification_images has been created
+idtrackerai_app.base_idtrackerai - DEBUG - call: compute_list_of_blobs
+__main__.py_utils - INFO - Setting MKL library to use single thread
+__main__.segmentation - INFO - There is only one path, segmenting by frame indices
+__main__.segmentation - INFO - An error occurred while reading frame number : 198
+__main__.segmentation - INFO - ret: False
+__main__.segmentation - INFO - frame: None
+__main__.py_utils - INFO - Setting MKL library to use multiple threads
+__main__.video - INFO - the folder /nfs/research/birney/users/ian/MIKK_F0_tracking/split/open_field/session_20191111_1527_5-1_L_A_q1/preprocessing has been created
+idtrackerai_app.base_idtrackerai - DEBUG - call: check_segmentation_consistency
+idtrackerai_app.base_idtrackerai - DEBUG - call: save_list_of_blobs_segmented
+__main__.video - INFO - saving video object in /nfs/research/birney/users/ian/MIKK_F0_tracking/split/open_field/session_20191111_1527_5-1_L_A_q1/video_object.npy
+__main__.video - DEBUG - Video.save(open_multiple_files=False)
+idtrackerai_app.base_idtrackerai - DEBUG - call: model_area_and_crossing_detector
+tion                    ret: False
+[INFO    ] __main__.segmentation                    frame: None
+[INFO    ] __main__.py_utils                        Setting MKL library to use multiple threads
+[INFO    ] __main__.video                           the folder /nfs/research/birney/users/ian/MIKK_F0_tracking/split/open_field/session_20191111_1527_5-1_L_A_q1/preprocessing has been created
+[DEBUG   ] idtrackerai_app.base_idtrackerai         call: check_segmentation_consistency
+[DEBUG   ] idtrackerai_app.base_idtrackerai         call: save_list_of_blobs_segmented
+[INFO    ] __main__.video                           saving video object in /nfs/research/birney/users/ian/MIKK_F0_tracking/split/open_field/session_20191111_1527_5-1_L_A_q1/video_object.npy
+[DEBUG   ] __main__.video                           Video.save(open_multiple_files=False)
+[DEBUG   ] idtrackerai_app.base_idtrackerai         call: model_area_and_crossing_detector

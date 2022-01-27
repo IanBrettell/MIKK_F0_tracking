@@ -43,5 +43,4 @@ rule split_videos:
     script:
         "../scripts/split_videos.py"
 
-# Then move to google cloud to process
 

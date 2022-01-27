@@ -7,3 +7,7 @@ __default__:
 # 01_pre-processing.smk
 copy_videos:
   queue: datamover
+# 02_tracking.smk
+track_videos:
+  memory: 20000
+  queue: "bigmem"

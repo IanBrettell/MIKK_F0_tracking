@@ -23,6 +23,9 @@ data_store_dir:
 ####################
 opencv:
     /hps/nobackup/birney/users/ian/containers/MIKK_F0_tracking/opencv_4.5.1.sif
+idtrackerai:
+    # NOTE: Dockerfile for this container: workflow/envs/idtrackerai/Dockerfile
+    docker://saulpierottiebi/idtrackerai_cpu_gui:latest
 
 
 

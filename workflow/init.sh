@@ -9,7 +9,7 @@
 
 ssh codon
 module load singularity-3.7.0-gcc-9.3.0-dp5ffrp
-bsub -M 20000 -Is bash
+bsub -M 20000 -q bigmem -Is bash
 cd /hps/software/users/birney/ian/repos/MIKK_F0_tracking
 conda activate snakemake_6.12.1
 #conda activate snakemake_6.13.1
@@ -75,3 +75,30 @@ rserver \
     --server-user brettell
 
 ssh -L 8787:hl-codon-37-04:8787 proxy-codon
+
+####################
+# Run idtrackerai
+####################
+
+singularity shell docker://saulpierottiebi/idtrackerai_cpu_gui:latest
+INPUT_VIDEO=/nfs/research/birney/users/ian/MIKK_F0_tracking/split/open_field/20191121_1454_iCab_L_C_q4.mp4
+VID_LENGTH=18178
+idtrackerai terminal_mode \
+            --_video $INPUT_VIDEO \
+            --_bgsub 'True' \
+            --_range [0,$VID_LENGTH] \
+            --_session 20191121_1454_iCab_L_C_q4 \
+            --exec track_video
+
+# convert to .csv
+python /hps/software/users/birney/ian/repos/MIKK_F0_tracking/workflow/scripts/trajectories_to_csv.py /nfs/research/birney/users/ian/MIKK_F0_tracking/split/open_field/session_20191121_1454_iCab_L_C_q4
+
+idtrackerai terminal_mode \
+            --_video $INPUT_VIDEO \
+            --_bgsub 'True' \
+            --_intensity [$int_floor,$int_ceiling] \
+            --_area [$area_floor,$area_ceiling] \
+            --_range [0,$vid_length] \
+            --_nblobs 2 \
+            --_session $in_sample \
+            --exec track_video 
