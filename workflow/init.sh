@@ -50,6 +50,13 @@ singularity build --remote \
     $OPENCVCONT \
     workflow/envs/opencv_4.5.1.def
 
+# idtrackerai
+IDCONT=/hps/nobackup/birney/users/ian/containers/MIKK_F0_tracking/idtrackerai.sif
+module load singularity-3.7.0-gcc-9.3.0-dp5ffrp
+singularity build --remote \
+    $IDCONT \
+    workflow/envs/idtrackerai.def
+
 ####################
 # Run RStudio Server
 ####################

@@ -42,3 +42,6 @@ rule split_videos:
         config["opencv"]
     script:
         "../scripts/split_videos.py"
+
+# Then move to google cloud to process
+

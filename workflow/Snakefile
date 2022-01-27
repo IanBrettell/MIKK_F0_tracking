@@ -17,6 +17,7 @@ rule all:
         ),
 # split_videos
         expand(os.path.join(config["data_store_dir"], "split/{assay}/{sample}_{quadrant}.mp4"),
+                zip,
                 assay = ASSAYS,
                 sample = SAMPLES,
                 quadrant = QUADRANTS

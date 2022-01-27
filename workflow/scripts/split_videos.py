@@ -113,9 +113,13 @@ else:
 
 left_side_width = 288
 right_side_width = 290
-if date == 20191111 and QUADRANT == "q1" or QUADRANT == "q4":
+if date == 20191111 and QUADRANT == "q1":
     right = wid - right_side_width
-elif date == 20191111 and QUADRANT == "q2" or QUADRANT == "q3":
+elif date == 20191111 and QUADRANT == "q4":
+    right = wid - right_side_width
+elif date == 20191111 and QUADRANT == "q2":
+    left = left_side_width
+elif date == 20191111 and QUADRANT == "q2":
     left = left_side_width
     
 # Get size of output video
