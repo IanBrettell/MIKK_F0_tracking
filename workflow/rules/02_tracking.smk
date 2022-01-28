@@ -6,19 +6,25 @@ def get_vid_length(wildcards):
     elif wildcards.assay == "novel_object":
         start = samples_df.loc[samples_df["sample"] == wildcards.sample, "no_start"]
         end = samples_df.loc[samples_df["sample"] == wildcards.sample, "no_end"]
-    vid_length = end[0] - start[0]
+    vid_length = int(end) - int(start)
     return(vid_length)
+
+# adapt memory usage for tracking videos
+def get_mem_mb(wildcards, attempt):
+    return attempt * 10000
 
 rule track_videos:
     input:
         rules.split_videos.output
     output:
-        os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories/trajectories.npy")
+        os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories_wo_gaps/trajectories_wo_gaps.npy")
     log:
         os.path.join(config["working_dir"], "logs/track_videos/{assay}/{sample}/{quadrant}.log"),
     params:
         vid_length = get_vid_length,
         vid_name = "{sample}_{quadrant}"
+    resources:
+        mem_mb = get_mem_mb
     container:
         config["idtrackerai"]
     shell:
@@ -37,12 +43,12 @@ rule trajectories_to_csv:
         trajectories = rules.track_videos.output,
         script = "workflow/scripts/trajectories_to_csv.py"
     output:
-        os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories/trajectories.trajectories.csv")
+        os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories_wo_gaps/trajectories_wo_gaps.trajectories.csv")
     log:
-        os.path.join(config["working_dir"], "logs/track_videos/{assay}/{sample}/{quadrant}.log"),
+        os.path.join(config["working_dir"], "logs/trajectories_to_csv/{assay}/{sample}/{quadrant}.log"),
     params:
-        in_path = lambda wildcards, output: os.path.split(output[0])[0]
+        in_path = os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}")
     shell:
         """
-        {input.script} {params.in_path}
+        python {input.script} {params.in_path}
         """

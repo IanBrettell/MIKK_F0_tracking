@@ -25,11 +25,19 @@ rule all:
 #####################
 # 02_tracking.smk
 #####################
-        expand(os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories/trajectories.npy"),
+# track_videos
+        expand(os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories_wo_gaps/trajectories_wo_gaps.npy"),
                 zip,
-                assay = ASSAYS[0],
-                sample = SAMPLES[0],
-                quadrant = QUADRANTS[0]        
+                assay = ASSAYS,
+                sample = SAMPLES,
+                quadrant = QUADRANTS        
+        ),
+# trajectories_to_csv
+        expand(os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories_wo_gaps/trajectories_wo_gaps.trajectories.csv"),
+                zip,
+                assay = ASSAYS,
+                sample = SAMPLES,
+                quadrant = QUADRANTS         
         ),
 
 #####################
