@@ -13,6 +13,7 @@ def get_vid_length(wildcards):
 def get_mem_mb(wildcards, attempt):
     return attempt * 10000
 
+# Track videos with idtrackerai
 rule track_videos:
     input:
         rules.split_videos.output
@@ -38,6 +39,7 @@ rule track_videos:
                 2> {log}
         """
 
+# Convert numpy arrays to .csv files
 rule trajectories_to_csv:
     input:
         trajectories = rules.track_videos.output,
