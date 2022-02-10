@@ -8,7 +8,7 @@
 
 * Here on EBI's Codon cluster: `/nfs/ftp/private/indigene_ftp/upload/behaviour/transfer/20191111_panel_1`
 
-2. 20191120_1217_106-2_R_C.avi comes in two parts due to accidental cessation of the recording between the open field and novel object assay. These need to get stitched together using this script: [workflow/scripts/join_20191120_1217_106-2_R_C.py](https://github.com/brettellebi/MIKK_F0_tracking/blob/master/workflow/scripts/join_20191120_1217_106-2_R_C.py) (instructions included in the header of the script; conda environment here: `workflow/envs/opencv_4.5.5.yaml`)
+2. 20191120_1217_106-2_R_C.avi comes in two parts due to accidental cessation of the recording between the open field and novel object assay. These need to get stitched together using this script: [workflow/scripts/join_20191120_1217_106-2_R_C.py](https://github.com/brettellebi/MIKK_F0_tracking/blob/master/workflow/scripts/join_20191120_1217_106-2_R_C.py) (instructions included in the header of the script; conda environment here: [workflow/envs/opencv_4.5.5.yaml](https://github.com/brettellebi/MIKK_F0_tracking/blob/master/workflow/envs/opencv_4.5.5.yaml))
 
 3. Create Snakemake environment
 
