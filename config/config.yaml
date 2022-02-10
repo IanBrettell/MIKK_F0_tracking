@@ -17,7 +17,7 @@ raw_data_dir:
 working_dir:
     /hps/nobackup/birney/users/ian/MIKK_F0_tracking
 data_store_dir:
-    /nfs/research/birney/users/ian/MIKK_F0_tracking
+    /nfs/research/birney/projects/indigene/MIKK_F0_tracking
 ####################
 # Containers
 ####################

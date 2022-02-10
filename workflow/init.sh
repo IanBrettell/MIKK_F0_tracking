@@ -9,7 +9,7 @@
 
 ssh codon
 module load singularity-3.7.0-gcc-9.3.0-dp5ffrp
-bsub -M 20000 -q bigmem -Is bash
+bsub -M 20000 -Is bash
 cd /hps/software/users/birney/ian/repos/MIKK_F0_tracking
 conda activate snakemake_6.12.1
 #conda activate snakemake_6.13.1
@@ -81,6 +81,14 @@ ssh -L 8787:hl-codon-37-04:8787 proxy-codon
 # Run idtrackerai
 ####################
 
+## GUI
+ssh codon
+bsub -M 10000 -q gui -XF -Is bash
+module load singularity-3.7.0-gcc-9.3.0-dp5ffrp
+singularity shell docker://saulpierottiebi/idtrackerai_cpu_gui:latest
+idtrackerai
+
+## Terminal mode
 singularity shell docker://saulpierottiebi/idtrackerai_cpu_gui:latest
 INPUT_VIDEO=/nfs/research/birney/users/ian/MIKK_F0_tracking/split/open_field/20191121_1454_iCab_L_C_q4.mp4
 VID_LENGTH=18178

@@ -119,7 +119,7 @@ elif date == 20191111 and QUADRANT == "q4":
     right = wid - right_side_width
 elif date == 20191111 and QUADRANT == "q2":
     left = left_side_width
-elif date == 20191111 and QUADRANT == "q2":
+elif date == 20191111 and QUADRANT == "q3":
     left = left_side_width
     
 # Get size of output video
