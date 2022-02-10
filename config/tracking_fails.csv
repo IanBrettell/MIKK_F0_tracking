@@ -1,4 +1,5 @@
-run,assay,quadrant,log
+sample,assay,quadrant,log
+20191112_1236_18-2_L_A,novel_object,q3,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191112_1236_18-2_L_A/q3.log #ValueError: There is not part in the video where the 2 animals are visible. Try a different segmentation or check the number of animals in the video.
 20191112_1303_17-1_L_A,novel_object,q3,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191112_1303_17-1_L_A/q3.log #ValueError: There is not part in the video where the 2 animals are visible. Try a different segmentation or check the number of animals in the video.
 20191114_1129_32-2_R_A,novel_object,q1,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191114_1129_32-2_R_A/q1.log #ValueError: The model diverged
 20191114_1129_32-2_R_A,novel_object,q3,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191114_1129_32-2_R_A/q3.log #RuntimeError: Unable to set dataset extent (dimension cannot exceed the existing maximal size (new: 343981 max: 343980))
@@ -15,8 +16,8 @@ run,assay,quadrant,log
 20191118_1311_80-2_L_B,novel_object,q3,NA # Video does not exist – was prematurely stopped during data collection
 20191118_1311_80-2_L_B,novel_object,q4,NA # Video does not exist – was prematurely stopped during data collection
 20191120_1056_32-2_R_C,novel_object,q3,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191120_1056_32-2_R_C/q3.log #KeyboardInterrupt
-20191120_1217_106-2_R_C,novel_object,q1,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191120_1217_106-2_R_C/q1.log #cv2.error: OpenCV(3.4.5) /io/opencv/modules/imgproc/src/resize.cpp:3784: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
-20191120_1217_106-2_R_C,novel_object,q2,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191120_1217_106-2_R_C/q2.log #cv2.error: OpenCV(3.4.5) /io/opencv/modules/imgproc/src/resize.cpp:3784: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
-20191120_1217_106-2_R_C,novel_object,q3,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191120_1217_106-2_R_C/q3.log #cv2.error: OpenCV(3.4.5) /io/opencv/modules/imgproc/src/resize.cpp:3784: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
-20191120_1217_106-2_R_C,novel_object,q4,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191120_1217_106-2_R_C/q4.log #cv2.error: OpenCV(3.4.5) /io/opencv/modules/imgproc/src/resize.cpp:3784: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
+#20191120_1217_106-2_R_C,novel_object,q1,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191120_1217_106-2_R_C/q1.log #cv2.error: OpenCV(3.4.5) /io/opencv/modules/imgproc/src/resize.cpp:3784: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
+#20191120_1217_106-2_R_C,novel_object,q2,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191120_1217_106-2_R_C/q2.log #cv2.error: OpenCV(3.4.5) /io/opencv/modules/imgproc/src/resize.cpp:3784: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
+#20191120_1217_106-2_R_C,novel_object,q3,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191120_1217_106-2_R_C/q3.log #cv2.error: OpenCV(3.4.5) /io/opencv/modules/imgproc/src/resize.cpp:3784: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
+#20191120_1217_106-2_R_C,novel_object,q4,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191120_1217_106-2_R_C/q4.log #cv2.error: OpenCV(3.4.5) /io/opencv/modules/imgproc/src/resize.cpp:3784: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
 

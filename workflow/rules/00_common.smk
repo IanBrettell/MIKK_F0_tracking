@@ -22,17 +22,22 @@ SAMPLES = samples_df["sample"]
 ASSAYS = ["open_field", "novel_object"]
 QUADRANTS = ["q1", "q2", "q3", "q4"]
 
-# The novel_object assay is missing from 20191118_1311_80-2_L_B
-# Therefore it needs to be removed from the combinations
+# Remove faulty videos from sample list
+
+# Read in videos to be excluded
+excl_df = pd.read_csv(config["excluded_videos"], comment = "#")
 
 ## Create list of variable lists
 full_list = [SAMPLES, ASSAYS, QUADRANTS]
 ## Create list of tuple combinations
 combos = list(itertools.product(*full_list))
-## Remove unavailable combinations
-for QUADRANT in QUADRANTS:
-    combos.remove(('20191118_1311_80-2_L_B', 'novel_object', QUADRANT))
-## Create new lists of variables
+
+# Remove unavailable combinations
+excl_df = excl_df.reset_index()
+for index, row in excl_df.iterrows():
+    combos.remove((row['sample'], row['assay'], row['quadrant']))
+
+# Create new lists of variables
 SAMPLES = [i[0] for i in combos]
 ASSAYS = [i[1] for i in combos]
 QUADRANTS = [i[2] for i in combos]

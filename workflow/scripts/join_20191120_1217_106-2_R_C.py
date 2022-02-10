@@ -3,7 +3,7 @@
 # module load singularity-3.7.0-gcc-9.3.0-dp5ffrp
 # bsub -M 20000 -q datamover -Is bash
 # cd /hps/software/users/birney/ian/repos/MIKK_F0_tracking
-# singularity shell /hps/nobackup/birney/users/ian/containers/MIKK_F0_tracking/opencv_4.5.1.sif
+# conda activate opencv_4.5.5.yaml
 # python workflow/scripts/join_20191120_1217_106-2_R_C.py  
 
 # Add packages

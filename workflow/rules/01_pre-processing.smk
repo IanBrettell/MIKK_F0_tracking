@@ -1,3 +1,4 @@
+# Copy videos from FTP to Codon (for ease downstream)
 rule copy_videos:
     input:
         os.path.join(config["raw_data_dir"], "{sample}.avi"),
@@ -11,6 +12,7 @@ rule copy_videos:
             2> {log}
         """
 
+# Generate single-frame grab showing coordinate of splits
 rule set_split_coords:
     input:
         video = os.path.join(config["working_dir"], "raw_videos/{sample}.avi"),
@@ -26,6 +28,7 @@ rule set_split_coords:
     script:
         "../scripts/set_split_coords.py"
 
+# Split videos into quadrants and assays (1 raw video * 4 quadrants * 2 assays = 8 output videos)
 rule split_videos:
     input:
         rules.copy_videos.output,

@@ -3,6 +3,8 @@
 ####################
 samples_file:
     config/samples.csv
+excluded_videos:
+    config/tracking_fails.csv
 ####################
 # Parameters
 ####################
