@@ -10,9 +10,11 @@
 ssh codon
 module load singularity-3.7.0-gcc-9.3.0-dp5ffrp
 bsub -M 20000 -Is bash
+# If needing to copy videos from FTP (rule copy_videos),
+# Need to use the datamover queue so that it can see the FTP drive:
+# bsub -M 20000 -q datamover -Is bash
 cd /hps/software/users/birney/ian/repos/MIKK_F0_tracking
 conda activate snakemake_6.12.1
-#conda activate snakemake_6.13.1
 snakemake \
   --jobs 5000 \
   --latency-wait 100 \
