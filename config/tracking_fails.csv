@@ -1,4 +1,4 @@
-sample,assay,quadrant,log_file
+sample,assay,quadrant,log_file,error_message
 20191112_1236_18-2_L_A,novel_object,q3,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191112_1236_18-2_L_A/q3.log,#ValueError: There is not part in the video where the 2 animals are visible. Try a different segmentation or check the number of animals in the video.
 20191112_1303_17-1_L_A,novel_object,q3,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191112_1303_17-1_L_A/q3.log,#ValueError: There is not part in the video where the 2 animals are visible. Try a different segmentation or check the number of animals in the video.
 20191114_1129_32-2_R_A,novel_object,q1,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191114_1129_32-2_R_A/q1.log,#ValueError: The model diverged
@@ -14,8 +14,8 @@ sample,assay,quadrant,log_file
 20191114_1129_32-2_R_A,novel_object,q3,/hps/nobackup/birney/users/ian/MIKK_F0_tracking/logs/track_videos/novel_object/20191114_1129_32-2_R_A/q3.log,#RuntimeError: Unable to set dataset extent (dimension cannot exceed the existing maximal size (new: 343981 max: 343980))
 
 # These videos do not exist
-20191118_1311_80-2_L_B,novel_object,q1,NA # Video does not exist – was prematurely stopped during data collection
-20191118_1311_80-2_L_B,novel_object,q2,NA # Video does not exist – was prematurely stopped during data collection
-20191118_1311_80-2_L_B,novel_object,q3,NA # Video does not exist – was prematurely stopped during data collection
-20191118_1311_80-2_L_B,novel_object,q4,NA # Video does not exist – was prematurely stopped during data collection
+20191118_1311_80-2_L_B,novel_object,q1,NA,# Video does not exist – was prematurely stopped during data collection
+20191118_1311_80-2_L_B,novel_object,q2,NA,# Video does not exist – was prematurely stopped during data collection
+20191118_1311_80-2_L_B,novel_object,q3,NA,# Video does not exist – was prematurely stopped during data collection
+20191118_1311_80-2_L_B,novel_object,q4,NA,# Video does not exist – was prematurely stopped during data collection
 
