@@ -27,37 +27,40 @@ import os
 # Get variables
 
 ## Debugging
-IN_FILE = "/hps/nobackup/birney/users/ian/MIKK_F0_tracking/raw_videos/20191111_1527_5-1_L_A.avi"
+IN_FILE = "/nfs/research/birney/projects/indigene/raw_data/ian_videos/ian_pilot/all/20190612_1053_icab_kaga_R.avi"
 SAMPLES_FILE = "config/samples.csv"
-SAMPLE = "20191111_1527_5-1_L_A"
-OUT_FILE = "results/split_coord_images/20191111_1527_5-1_L_A.jpg"
+ASSAY = "novel_object"
+SAMPLE = "20190612_1053_icab_kaga_R"
+OUT_FILE = "results/split_coord_images/novel_object/20190612_1053_icab_kaga_R.png"
 
 ## True
-IN_FILE = snakemake.input.video
+IN_FILE = snakemake.input.video[0]
 SAMPLES_FILE = snakemake.params.samples_file
+ASSAY = snakemake.params.assay
 SAMPLE = snakemake.params.sample
 OUT_FILE = snakemake.output.fig
 
 # Read samples_file
-samples_df = pd.read_csv(SAMPLES_FILE, comment="#", skip_blank_lines=True, index_col=0)
+samples_df = pd.read_csv(SAMPLES_FILE, comment="#", skip_blank_lines=True, index_col=2)
 
 # Get date
-date = int(samples_df.loc[SAMPLE, "date"])
+date = int(samples_df.loc[SAMPLE, "date"][0])
 
-# Get start frame for open field assay
-start = int(samples_df.loc[SAMPLE, "of_start"])
-
-# Get crop adjustment values
+# Get start frame and crop adjustment values
 ## note: Negative values for top/bottom shift boundary up
 ## note: Negative values for left/right shift boundary left
-adj_top = int(samples_df.loc[SAMPLE, "adj_top"])
-adj_bottom = int(samples_df.loc[SAMPLE, "adj_bottom"])
-adj_left = int(samples_df.loc[SAMPLE, "adj_left"])
-adj_right = int(samples_df.loc[SAMPLE, "adj_right"])
+if ASSAY == "open_field":
+    start = int(samples_df.loc[SAMPLE, "of_start"][0])
+    adj_top = int(samples_df.loc[SAMPLE, "adj_top_of"][0])
+    adj_right = int(samples_df.loc[SAMPLE, "adj_right_of"][0])
+elif ASSAY == "novel_object":
+    start = int(samples_df.loc[SAMPLE, "no_start"][0])
+    adj_top = int(samples_df.loc[SAMPLE, "adj_top_no"][0])
+    adj_right = int(samples_df.loc[SAMPLE, "adj_right_no"][0])
 
 # Read video from file
 cap = cv.VideoCapture(IN_FILE)
-print("Video captured")
+
 # Frame width and height
 wid = int(cap.get(cv.CAP_PROP_FRAME_WIDTH))
 hei = int(cap.get(cv.CAP_PROP_FRAME_HEIGHT))
@@ -75,29 +78,16 @@ ret, frame = cap.read()
 # Add vertical line 
 start_point = (mid_x, 0)
 end_point = (mid_x, hei)
-color = (255,0,0)
+color = (62,90,248)
 thickness = 1
 frame = cv.line(frame, start_point, end_point, color, thickness)
 
 # Add horizontal line
 start_point = (0, mid_y)
 end_point = (wid, mid_y)
-color = (255,0,0)
+color = (62,90,248)
 thickness = 1
 frame = cv.line(frame, start_point, end_point, color, thickness)
-
-# Add lines for outer boundaries for 20191111 videos (which have a black outer boundary for some reason)
-left_side_width = 288
-right_side_width = 290
-if date == 20191111:
-    left_start = (left_side_width, 0)
-    left_end = (left_side_width, hei)
-    right_start = (wid - right_side_width, 0)
-    right_end = (wid - right_side_width, hei)
-    # Add vertical line for left boundary
-    frame = cv.line(frame, left_start, left_end, color, thickness)
-    # Add vertical line for right boundary
-    frame = cv.line(frame, right_start, right_end, color, thickness)
 
 # Write frame
 cv.imwrite(OUT_FILE, frame)

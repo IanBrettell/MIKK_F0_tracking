@@ -9,49 +9,48 @@ def get_vid_length(wildcards):
     vid_length = int(end) - int(start)
     return(vid_length)
 
+#def get_bgsub(wildcards):
+#    if wildcards.assay == "open_field":
+#        target_col = "bgsub_" + "of_" + wildcards.quadrant
+#        bgsub = samples_df.loc[samples_df["sample"] == wildcards.sample, target_col].values[0]
+#    elif wildcards.assay == "novel_object":
+#        target_col = "bgsub_" + "no_" + wildcards.quadrant
+#        bgsub = samples_df.loc[samples_df["sample"] == wildcards.sample, target_col].values[0]
+#    return(bgsub)
+
 def get_bgsub(wildcards):
-    if wildcards.assay == "open_field":
-        target_col = "bgsub_" + "of_" + wildcards.quadrant
-        bgsub = samples_df.loc[samples_df["sample"] == wildcards.sample, target_col].values[0]
-    elif wildcards.assay == "novel_object":
-        target_col = "bgsub_" + "no_" + wildcards.quadrant
-        bgsub = samples_df.loc[samples_df["sample"] == wildcards.sample, target_col].values[0]
+    bgsub = samples_df.loc[(samples_df['sample'] == wildcards.sample) & \
+                           (samples_df['assay'] == wildcards.assay) & \
+                           (samples_df['quadrant'] == wildcards.quadrant), \
+                           'bgsub'].values[0]
     return(bgsub)
 
 def get_intensity_floor(wildcards):
-    if wildcards.assay == "open_field":
-        target_col = "intensity_floor_" + "of_" + wildcards.quadrant
-        int_floor = int(samples_df.loc[samples_df["sample"] == wildcards.sample, target_col])
-    elif wildcards.assay == "novel_object":
-        target_col = "intensity_floor_" + "no_" + wildcards.quadrant
-        int_floor = int(samples_df.loc[samples_df["sample"] == wildcards.sample, target_col])
+    int_floor = samples_df.loc[(samples_df['sample'] == wildcards.sample) & \
+                           (samples_df['assay'] == wildcards.assay) & \
+                           (samples_df['quadrant'] == wildcards.quadrant), \
+                           'intensity_floor'].values[0]
     return(int_floor)
 
 def get_intensity_ceiling(wildcards):
-    if wildcards.assay == "open_field":
-        target_col = "intensity_ceiling_" + "of_" + wildcards.quadrant
-        int_ceiling = int(samples_df.loc[samples_df["sample"] == wildcards.sample, target_col])
-    elif wildcards.assay == "novel_object":
-        target_col = "intensity_ceiling_" + "no_" + wildcards.quadrant
-        int_ceiling = int(samples_df.loc[samples_df["sample"] == wildcards.sample, target_col])
+    int_ceiling = samples_df.loc[(samples_df['sample'] == wildcards.sample) & \
+                                 (samples_df['assay'] == wildcards.assay) & \
+                                 (samples_df['quadrant'] == wildcards.quadrant), \
+                                 'intensity_ceiling'].values[0]
     return(int_ceiling)
 
 def get_area_floor(wildcards):
-    if wildcards.assay == "open_field":
-        target_col = "area_floor_" + "of_" + wildcards.quadrant
-        area_floor = int(samples_df.loc[samples_df["sample"] == wildcards.sample, target_col])
-    elif wildcards.assay == "novel_object":
-        target_col = "area_floor_" + "no_" + wildcards.quadrant
-        area_floor = int(samples_df.loc[samples_df["sample"] == wildcards.sample, target_col])
+    area_floor = samples_df.loc[(samples_df['sample'] == wildcards.sample) & \
+                                (samples_df['assay'] == wildcards.assay) & \
+                                (samples_df['quadrant'] == wildcards.quadrant), \
+                                'area_floor'].values[0]
     return(area_floor)
 
 def get_area_ceiling(wildcards):
-    if wildcards.assay == "open_field":
-        target_col = "area_ceiling_" + "of_" + wildcards.quadrant
-        area_ceiling = int(samples_df.loc[samples_df["sample"] == wildcards.sample, target_col])
-    elif wildcards.assay == "novel_object":
-        target_col = "area_ceiling_" + "no_" + wildcards.quadrant
-        area_ceiling = int(samples_df.loc[samples_df["sample"] == wildcards.sample, target_col])
+    area_ceiling = samples_df.loc[(samples_df['sample'] == wildcards.sample) & \
+                                (samples_df['assay'] == wildcards.assay) & \
+                                (samples_df['quadrant'] == wildcards.quadrant), \
+                                'area_ceiling'].values[0]
     return(area_ceiling)
 
 # adapt memory usage for tracking videos

@@ -1,0 +1,58 @@
+# Adding old parameters to new file
+
+```{r}
+library(tidyverse)
+
+OLD = here::here("config/samples.csv")
+SAUL = here::here("config/idtrackerai_video_param_combinations.csv")
+
+YAML = here::here("config/idtrackerai_params_combinations.yaml")
+
+yaml = yaml::read_yaml(YAML) %>% 
+  purrr::map_dfr(., function(ASSAY){
+    purrr::map_dfr(ASSAY, as_tibble)
+    },.id = "assay") %>% 
+  dplyr::rename(param = "name")
+
+# Read in and process
+
+old = readr::read_csv(OLD) %>% 
+  dplyr::select(sample,
+                date,
+                time,
+                tank_side,
+                of_start,
+                no_start,
+                fps,
+                adj_top,
+                adj_right) %>% 
+  # get `of_end` and `no_end`
+  dplyr::mutate(of_end = of_start + (600 * fps),
+                no_end = no_start + (600 * fps)) %>% 
+  # add assay and quadrant
+  dplyr::inner_join(tidyr::crossing(sample = .$sample,
+                                    assay = c("open_field", "novel_object"),
+                                    quadrant = c("q1", "q2", "q3", "q4")),
+                    by = "sample") %>% 
+  # add sample name to match with Saul's name
+  tidyr::unite(col = "saul_sample",
+               sample, assay, quadrant,
+               sep = "__",
+               remove = F)
+
+# Read in Saul's
+
+saul = readr::read_csv(SAUL,
+                       col_names = c("saul_sample", "param"))
+
+
+# Bind
+
+out = saul %>% 
+  dplyr::left_join(old, by = "saul_sample") %>% 
+  dplyr::left_join(yaml, by = c("param", "assay"))
+
+
+readr::write_csv(out, here::here("config/samples_long.csv"))
+```
+

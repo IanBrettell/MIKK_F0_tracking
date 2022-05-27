@@ -9,7 +9,7 @@
 
 ssh codon
 module load singularity-3.7.0-gcc-9.3.0-dp5ffrp
-bsub -M 20000 -Is bash
+bsub -Is bash
 # If needing to copy videos from FTP (rule copy_videos),
 # Need to use the datamover queue so that it can see the FTP drive:
 # bsub -M 20000 -q datamover -Is bash
@@ -24,7 +24,7 @@ snakemake \
   --rerun-incomplete \
   --use-conda \
   --use-singularity \
-  --restart-times 1 \
+  --restart-times 0 \
   -s workflow/Snakefile \
   -p
 
@@ -44,7 +44,7 @@ bsub -M 20000 -XF -Is bash
 RCONT=/hps/nobackup/birney/users/ian/containers/MIKK_F0_tracking/R_4.1.2.sif
 singularity build --remote \
     $RCONT \
-    workflow/envs/R_4.1.2.def
+    workflow/envs/R_4.1.2/R_4.1.2.def
 
 # Open CV (python)
 OPENCVCONT=/hps/nobackup/birney/users/ian/containers/MIKK_F0_tracking/opencv_4.5.1.sif
@@ -65,16 +65,16 @@ singularity build --remote \
 ####################
 
 ssh proxy-codon
-bsub -q datamover -M 50000 -Is bash
+bsub -M 50000 -Is bash
 module load singularity-3.7.0-gcc-9.3.0-dp5ffrp
-RCONT=/hps/nobackup/birney/users/ian/containers/MIKK_F0_tracking/R_4.1.2.sif
-singularity shell --bind /hps/software/users/birney/ian/rstudio_db:/var/lib/rstudio-server \
-                  --bind /hps/software/users/birney/ian/tmp:/tmp \
-                  --bind /hps/software/users/birney/ian/run:/run \
-                  $RCONT
-
+CONT=/hps/nobackup/birney/users/ian/containers/MIKK_F0_tracking/R_4.1.2.sif
+singularity shell --bind /hps/nobackup/birney/users/ian/rstudio_db:/var/lib/rstudio-server \
+                  --bind /hps/nobackup/birney/users/ian/tmp:/tmp \
+                  --bind /hps/nobackup/birney/users/ian/run:/run \
+                  $CONT
+rstudio-server kill-all
 rserver \
-    --rsession-config-file /hps/software/users/birney/ian/repos/MIKK_F0_tracking/workflow/envs/rsession.conf \
+    --rsession-config-file /hps/software/users/birney/ian/repos/MIKK_F0_tracking/workflow/envs/R_4.1.2/rsession.conf \
     --server-user brettell
 
 ssh -L 8787:hl-codon-37-04:8787 proxy-codon
@@ -113,3 +113,11 @@ idtrackerai terminal_mode \
             --_nblobs 2 \
             --_session $in_sample \
             --exec track_video 
+
+
+####################
+# Copy videos from cluster to local
+####################
+
+# To set tracking parameters
+rsync -aP brettell@codon:/hps/nobackup/birney/users/ian/MIKK_F0_tracking/recoded ~/Downloads/MIKK_F0

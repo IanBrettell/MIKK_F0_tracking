@@ -283,9 +283,9 @@ __main__.video - DEBUG - Video.save(open_multiple_files=False)
 __main__.video - INFO - saving video object in /nfs/research/birney/projects/indigene/MIKK_F0_tracking/split/open_field/session_20191118_1252_60-1_R_B_q3/video_object.npy
 __main__.video - DEBUG - Video.save(open_multiple_files=False)
 __main__.accumulation_manager - WARNING - There are no more fragments acceptable for training
-ng predictions
-[INFO    ] __main__.assigner                        done
-[DEBUG   ] __main__.assigner                        Number of generated predictions: 10
+idtrackerai_app.base_idtrackerai - INFO - Estimated accuracy: 1.0
+__main__.video - INFO - Data policy: all
+                 Number of generated predictions: 10
 [DEBUG   ] __main__.assigner                        Predictions range: [1. 2.]
 [INFO    ] __main__.assigner                        Assigning identities
 [INFO    ] __main__.video                           saving video object in /nfs/research/birney/projects/indigene/MIKK_F0_tracking/split/open_field/session_20191118_1252_60-1_R_B_q3/video_object.npy
@@ -323,9 +323,9 @@ ng predictions
 [INFO    ] __main__.video                           saving video object in /nfs/research/birney/projects/indigene/MIKK_F0_tracking/split/open_field/session_20191118_1252_60-1_R_B_q3/video_object.npy
 [DEBUG   ] __main__.video                           Video.save(open_multiple_files=False)
 [WARNING ] __main__.accumulation_manager            There are no more fragments acceptable for training
-ajectories_wo_gaps
-idtrackerai.tracker_api - INFO - Saving trajectories
-__main__.identify_non_assigned_with_interpolation - DEBUG - creating copy of list_of_blobs
+[INFO    ] idtrackerai_app.base_idtrackerai         Estimated accuracy: 1.0
+[INFO    ] __main__.video                           Data policy: all
+ of list_of_blobs
 __main__.video - INFO - saving video object in /nfs/research/birney/projects/indigene/MIKK_F0_tracking/split/open_field/session_20191118_1252_60-1_R_B_q1/video_object.npy
 __main__.video - DEBUG - Video.save(open_multiple_files=False)
 __main__.video - INFO - saving video object in /nfs/research/birney/projects/indigene/MIKK_F0_tracking/split/open_field/session_20191118_1252_60-1_R_B_q1/video_object.npy

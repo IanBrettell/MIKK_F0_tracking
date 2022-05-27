@@ -1,0 +1,132 @@
+# This file contains the parameters for idtrackerai that are used in the
+# workflow. The parameters are tried in order, and if the first combination
+# does not satisfy the quality requirements, the second combination is run and
+# so on.
+
+# Author: Saul Pierotti
+# Mail: saul@ebi.ac.uk
+# Last edited: May 25th 2022
+
+open_field:
+
+  - name: "default"
+    intensity_floor: "0"
+    intensity_ceiling: "200"
+    area_floor: "100"
+    area_ceiling: "5000"
+    bgsub: "True"
+    num_animals: "2"
+
+  - name : "no_bg_sub"
+    intensity_floor: "0"
+    intensity_ceiling: "170"
+    area_floor: "100"
+    area_ceiling: "5000"
+    bgsub: "False"
+    num_animals: "2"
+
+  - name : "no_bg_sub_area_min_10"
+    intensity_floor: "0"
+    intensity_ceiling: "170"
+    area_floor: "10"
+    area_ceiling: "5000"
+    bgsub: "False"
+    num_animals: "2"
+
+  - name : "no_bg_sub_area_min_10_int_max_150"
+    intensity_floor: "0"
+    intensity_ceiling: "150"
+    area_floor: "10"
+    area_ceiling: "5000"
+    bgsub: "False"
+    num_animals: "2"
+
+novel_object:
+
+  - name: "default"
+    intensity_floor: "0"
+    intensity_ceiling: "200"
+    area_floor: "100"
+    area_ceiling: "5000"
+    bgsub: "True"
+    num_animals: "2"
+
+  - name: "no_bg_sub"
+    intensity_floor: "0"
+    intensity_ceiling: "170"
+    area_floor: "150" # to avoid the metal hook
+    area_ceiling: "2000" # to avoid the whole object
+    bgsub: "False"
+    num_animals: "2"
+
+  - name: "no_bg_sub_int_max_160"
+    intensity_floor: "0"
+    intensity_ceiling: "160"
+    area_floor: "150" # to avoid the metal hook
+    area_ceiling: "2000" # to avoid the whole object
+    bgsub: "False"
+    num_animals: "2"
+
+  - name: "no_bg_sub_int_max_180"
+    intensity_floor: "0"
+    intensity_ceiling: "180"
+    area_floor: "150" # to avoid the metal hook
+    area_ceiling: "2000" # to avoid the whole object
+    bgsub: "False"
+    num_animals: "2"
+
+  - name: "int_max_160_area_min_25"
+    intensity_floor: "0"
+    intensity_ceiling: "160"
+    area_floor: "25" # to avoid the metal hook
+    area_ceiling: "5000"
+    bgsub: "True"
+    num_animals: "2"
+
+  - name: "no_bg_subint_max_175_area_min_200"
+    intensity_floor: "0"
+    intensity_ceiling: "175" # to avoid the metal hook
+    area_floor: "200" # to avoid the metal hook when it is particularly large
+    area_ceiling: "2000" # to avoid the whole object
+    bgsub: "True"
+    num_animals: "2"
+
+  - name : "area_min_25"
+    intensity_floor: "0"
+    intensity_ceiling: "200"
+    area_floor: "25" # when one fish hides next to the object
+    area_ceiling: "5000"
+    bgsub: "True"
+    num_animals: "2"
+
+  - name: "area_min_150"
+    intensity_floor: "0"
+    intensity_ceiling: "200"
+    area_floor: "150" # removes the ghost when a fish is stationary for a while
+    area_ceiling: "5000"
+    bgsub: "True"
+    num_animals: "2"
+
+  - name: "int_max_150"
+    intensity_floor: "0"
+    intensity_ceiling: "150" # other strategy to remove the ghost fish
+    area_floor: "100"
+    area_ceiling: "5000"
+    bgsub: "True"
+    num_animals: "2"
+
+  - name: "int_max_140"
+    intensity_floor: "0"
+    intensity_ceiling: "140" # other strategy to remove the ghost fish
+    area_floor: "100"
+    area_ceiling: "5000"
+    bgsub: "True"
+    num_animals: "2"
+
+  - name: "no_bg_sub_int_max_180_area_min_100"
+    intensity_floor: "0"
+    intensity_ceiling: "180"
+    area_floor: "100" # to catch small fish
+    area_ceiling: "2000"
+    bgsub: "False"
+    num_animals: "2"

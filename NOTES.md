@@ -1,5 +1,21 @@
 # Notes
 
+## 25 May 2022
+
+Received Saul's methods of optimising parameters, comprising two files:
+
+- `config/idtrackerai_video_param_combinations.csv`
+
+- `config/idtrackerai_params_combinations.yaml`
+
+Workbook for incorporating both into the samples file:
+
+`book/Consolidate_old_and_new_sample_files.Rmd`
+
+Produces new samples file:
+
+`config/samples_long.csv`
+
 ## 20220211
 
 Noticed errors with tracking:
