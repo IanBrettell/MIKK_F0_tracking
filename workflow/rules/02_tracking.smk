@@ -1,11 +1,14 @@
 # pull tracking parameters from config/samples.csv
 def get_vid_length(wildcards):
+    row = samples_df.loc[(samples_df['sample'] == wildcards.sample) & \
+                         (samples_df['assay'] == wildcards.assay) & \
+                         (samples_df['quadrant'] == wildcards.quadrant)]
     if wildcards.assay == "open_field":
-        start = samples_df.loc[samples_df["sample"] == wildcards.sample, "of_start"]
-        end = samples_df.loc[samples_df["sample"] == wildcards.sample, "of_end"]
+        start = int(row['of_start'])
+        end = int(row['of_end'])
     elif wildcards.assay == "novel_object":
-        start = samples_df.loc[samples_df["sample"] == wildcards.sample, "no_start"]
-        end = samples_df.loc[samples_df["sample"] == wildcards.sample, "no_end"]
+        start = int(row['no_start'])
+        end = int(row['no_end'])
     vid_length = int(end) - int(start)
     return(vid_length)
 
@@ -64,9 +67,15 @@ rule track_videos:
     input:
         rules.split_videos.output
     output:
-        os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories/trajectories.npy"),
+        os.path.join(
+            config["working_dir"], 
+            "split/{assay}/{sample}/session_{sample}_{quadrant}/trajectories/trajectories.npy"
+        ),
     log:
-        os.path.join(config["working_dir"], "logs/track_videos/{assay}/{sample}/{quadrant}.log"),
+        os.path.join(
+            config["working_dir"], 
+            "logs/track_videos/{assay}/{sample}/{quadrant}.log"
+        ),
     params:
         vid_length = get_vid_length,
         vid_name = "{sample}_{quadrant}",
@@ -76,7 +85,7 @@ rule track_videos:
         area_floor = get_area_floor,
         area_ceiling = get_area_ceiling,
     resources:
-        mem_mb = get_mem_mb
+        mem_mb = lambda wildcards, attempt: attempt * 5000
     container:
         config["idtrackerai"]
     shell:

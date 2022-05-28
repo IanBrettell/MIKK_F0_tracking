@@ -71,17 +71,46 @@ rule split_videos:
     input:
         rules.copy_videos.output,
     output:
-        os.path.join(config["data_store_dir"], "split/{assay}/{sample}_{quadrant}.mp4"),
+        os.path.join(
+            config["working_dir"], 
+            "split/{assay}/{sample}/{quadrant}.avi"
+        ),
     log:
-        os.path.join(config["working_dir"], "logs/split_videos/{assay}/{sample}/{quadrant}.log"),
+        os.path.join(
+            config["working_dir"], 
+            "logs/split_videos/{assay}/{sample}/{quadrant}.log"
+        ),
     params:
         sample = "{sample}",
         assay = "{assay}",
         quadrant = "{quadrant}",
-        samples_file = lambda wildcards: config["samples_file"]
+        samples_file = lambda wildcards: config["samples_long"]
+    resources:
+        mem_mb = 2000
     container:
         config["opencv"]
     script:
         "../scripts/split_videos.py"
 
+rule get_split_video_dims:
+    input:
+        expand(rules.split_videos.output,
+                zip,
+                assay = ASSAYS_ZIP,
+                sample = SAMPLES_ZIP,
+                quadrant = QUADRANTS_ZIP       
+        ),
+    output:
+        "config/split_video_dims.csv"
+    log:
+        os.path.join(
+            config["working_dir"],
+            "logs/get_split_video_dims/all.log"
+        ),
+    container:
+        config["opencv"]
+    resources:
+        mem_mb = 300
+    script:
+        "../scripts/get_split_video_dims.py"            
 

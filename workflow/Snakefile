@@ -1,6 +1,6 @@
 include: "rules/00_common.smk"
 include: "rules/01_pre-processing.smk"
-#include: "rules/02_tracking.smk"
+include: "rules/02_tracking.smk"
 
 ##### Target rules #####
 
@@ -13,31 +13,30 @@ rule all:
 #        expand(os.path.join(config["working_dir"], "raw_videos/{sample}.avi"),
 #                sample = SAMPLES
 #        ),
-        expand(rules.recode_videos.output,
-                sample = list(set(SAMPLES_ZIP))
-        ),
-        expand(rules.set_split_coords.output,
-                zip,
-                assay = AS_ASSAYS,
-                sample = AS_SAMPLES
-        ),
-## split_videos
-#        expand(os.path.join(config["data_store_dir"], "split/{assay}/{sample}_{quadrant}.mp4"),
+#        expand(rules.recode_videos.output,
+#                sample = list(set(SAMPLES_ZIP))
+#        ),
+#        expand(rules.set_split_coords.output,
 #                zip,
-#                assay = ASSAYS,
-#                sample = SAMPLES,
-#                quadrant = QUADRANTS
+#                assay = AS_ASSAYS,
+#                sample = AS_SAMPLES
+#        ),
+#        expand(rules.split_videos.output,
+#                zip,
+#                assay = ASSAYS_ZIP,
+#                sample = SAMPLES_ZIP,
+#                quadrant = QUADRANTS_ZIP
 #        ),
 ######################
 ## 02_tracking.smk
 ######################
-## track_videos
-#        expand(os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories/trajectories.npy"),
-#                zip,
-#                assay = ASSAYS,
-#                sample = SAMPLES,
-#                quadrant = QUADRANTS        
-#        ),
+# track_videos
+        expand(rules.track_videos.output,
+                zip,
+                assay = ASSAYS_ZIP,
+                sample = SAMPLES_ZIP,
+                quadrant = QUADRANTS_ZIP       
+        ),
 ## trajectories_to_csv
 #        expand(os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories/trajectories.trajectories.csv"),
 #                zip,

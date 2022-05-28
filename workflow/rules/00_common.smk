@@ -49,7 +49,7 @@ configfile: "config/config.yaml"
 #
 #######################
 
-samples_df = pd.read_csv("config/samples_long.csv")
+samples_df = pd.read_csv(config["samples_long"])
 
 # Set variables
 
@@ -62,3 +62,4 @@ QUADRANTS_ZIP = samples_df['quadrant']
 sa_zip = sorted(list(set(zip(SAMPLES_ZIP, ASSAYS_ZIP))))
 AS_SAMPLES = [i[0] for i in sa_zip]
 AS_ASSAYS = [i[1] for i in sa_zip]
+

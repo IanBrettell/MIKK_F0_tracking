@@ -33,7 +33,7 @@ IN_FILE = "/hps/nobackup/birney/users/ian/MIKK_F0_tracking/raw_videos/20191111_1
 SAMPLE = "20191111_1527_5-1_L_A"
 ASSAY = "novel_object"
 QUADRANT = "q1"
-SAMPLES_FILE = "config/samples.csv"
+SAMPLES_FILE = "config/samples_long.csv"
 OUT_FILE = "/nfs/research/birney/users/ian/MIKK_F0_tracking/split/novel_object/20191111_1527_5-1_L_A_q1.mp4"
 
 ## True
@@ -46,27 +46,32 @@ OUT_FILE = snakemake.output[0]
 
 # Read samples_file
 
-samples_df = pd.read_csv(SAMPLES_FILE, comment="#", skip_blank_lines=True, index_col=0)
+df = pd.read_csv(SAMPLES_FILE, comment="#", skip_blank_lines=True)
+
+# Get target row
+
+row = df.loc[(df['sample'] == SAMPLE) & (df['assay'] == ASSAY) & (df['quadrant'] == QUADRANT)]
 
 # Get date
 
-date = int(samples_df.loc[SAMPLE, "date"])
+date = int(row['date'])
 
 # Get start and end frames
 
 if ASSAY == "open_field":
-    start = int(samples_df.loc[SAMPLE, "of_start"])
-    end = int(samples_df.loc[SAMPLE, "of_end"])
+    start = int(row['of_start'])
+    end = int(row['of_end'])
 elif ASSAY == "novel_object":
-    start = int(samples_df.loc[SAMPLE, "no_start"])
-    end = int(samples_df.loc[SAMPLE, "no_end"])
+    start = int(row['no_start'])
+    end = int(row['no_end'])
 
 # Get crop adjustment values
-
-adj_top = int(samples_df.loc[SAMPLE, "adj_top"])
-adj_bottom = int(samples_df.loc[SAMPLE, "adj_bottom"])
-adj_left = int(samples_df.loc[SAMPLE, "adj_left"])
-adj_right = int(samples_df.loc[SAMPLE, "adj_right"])
+if ASSAY == "open_field":
+    adj_top = int(row['adj_top_of'])
+    adj_right = int(row['adj_right_of'])
+elif ASSAY == "novel_object":
+    adj_top = int(row['adj_top_no'])
+    adj_right = int(row['adj_right_no'])        
 
 # Read video from file
 cap = cv.VideoCapture(IN_FILE)
@@ -128,7 +133,7 @@ size = (right - left, bottom - top)
 
 # Define the codec and create VideoWriter object
 
-fourcc = cv.VideoWriter_fourcc('m', 'p', '4', 'v')
+fourcc = cv.VideoWriter_fourcc('h', '2', '6', '4')
 out = cv.VideoWriter(OUT_FILE, fourcc, fps, size, isColor=True)
 
 # Capture frame-by-frame
