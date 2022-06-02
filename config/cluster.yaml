@@ -2,7 +2,7 @@ __default__:
   memory: 5000
   n: 1
   name: "{rule}.{wildcards}"
-  queue: standard
+  queue: short
   outfile: "{log}"
 # 01_pre-processing.smk
 copy_videos:
