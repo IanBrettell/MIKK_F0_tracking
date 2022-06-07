@@ -14,7 +14,7 @@ bsub -Is bash
 # Need to use the datamover queue so that it can see the FTP drive:
 # bsub -M 20000 -q datamover -Is bash
 cd /hps/software/users/birney/ian/repos/MIKK_F0_tracking
-conda activate snakemake_6.12.1
+conda activate snakemake_6.15.5
 snakemake \
   --jobs 5000 \
   --latency-wait 100 \
@@ -67,14 +67,15 @@ singularity build --remote \
 ssh proxy-codon
 bsub -M 50000 -Is bash
 module load singularity-3.7.0-gcc-9.3.0-dp5ffrp
-CONT=/hps/nobackup/birney/users/ian/containers/MIKK_F0_tracking/R_4.1.2.sif
+cd /hps/software/users/birney/ian/repos/MIKK_F0_tracking
+CONT=/hps/nobackup/birney/users/ian/containers/MIKK_F0_tracking/R_4.2.0.sif
 singularity shell --bind /hps/nobackup/birney/users/ian/rstudio_db:/var/lib/rstudio-server \
                   --bind /hps/nobackup/birney/users/ian/tmp:/tmp \
                   --bind /hps/nobackup/birney/users/ian/run:/run \
                   $CONT
 rstudio-server kill-all
 rserver \
-    --rsession-config-file /hps/software/users/birney/ian/repos/MIKK_F0_tracking/workflow/envs/R_4.1.2/rsession.conf \
+    --rsession-config-file /hps/software/users/birney/ian/repos/MIKK_F0_tracking/workflow/envs/R_4.2.0/rsession.conf \
     --server-user brettell
 
 ssh -L 8787:hl-codon-37-04:8787 proxy-codon

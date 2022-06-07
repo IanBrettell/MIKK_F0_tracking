@@ -63,3 +63,7 @@ sa_zip = sorted(list(set(zip(SAMPLES_ZIP, ASSAYS_ZIP))))
 AS_SAMPLES = [i[0] for i in sa_zip]
 AS_ASSAYS = [i[1] for i in sa_zip]
 
+# All quadrants
+
+QUADRANTS_ALL = ["q1", "q2", "q3", "q4"]
+

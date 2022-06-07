@@ -102,7 +102,7 @@ saul_sample,param,sample,date,time,tank_side,of_start,no_start,fps,adj_top_of,ad
 20191112_1331_68-1_L_A__open_field__q1,no_bg_sub_area_min_10,20191112_1331_68-1_L_A,20191112,1331,L,1992,21017,30,-17,-17,-2,-2,19992,39017,open_field,q1,0,170,10,5000,False,2,Top
 20191112_1331_68-1_L_A__open_field__q2,no_bg_sub_area_min_10_int_max_150,20191112_1331_68-1_L_A,20191112,1331,L,1992,21017,30,-17,-17,-2,-2,19992,39017,open_field,q2,0,150,10,5000,False,2,Bottom
 20191112_1331_68-1_L_A__open_field__q3,no_bg_sub_area_min_10,20191112_1331_68-1_L_A,20191112,1331,L,1992,21017,30,-17,-17,-2,-2,19992,39017,open_field,q3,0,170,10,5000,False,2,Top
-20191112_1331_68-1_L_A__open_field__q4,no_bg_sub_area_min_10,20191112_1331_68-1_L_A,20191112,1331,L,1992,21017,30,-17,-17,-2,-2,19992,39017,open_field,q4,0,170,10,5000,False,2,Bottom
+20191112_1331_68-1_L_A__open_field__q4,no_bg_sub_area_min_10,20191112_1331_68-1_L_A,20191112,1331,L,1992,21017,30,-17,-17,-2,-2,19992,39017,open_field,q4,0,150,10,1000,False,2,Bottom
 20191112_1358_23-1_L_A__novel_object__q1,no_bg_sub_int_max_160,20191112_1358_23-1_L_A,20191112,1358,L,1933,21060,30,-12,-12,-3,-3,19933,39060,novel_object,q1,0,160,150,2000,False,2,Bottom
 20191112_1358_23-1_L_A__novel_object__q2,no_bg_sub_int_max_180,20191112_1358_23-1_L_A,20191112,1358,L,1933,21060,30,-12,-12,-3,-3,19933,39060,novel_object,q2,0,180,150,2000,False,2,Left
 20191112_1358_23-1_L_A__novel_object__q3,int_max_140,20191112_1358_23-1_L_A,20191112,1358,L,1933,21060,30,-12,-12,-3,-3,19933,39060,novel_object,q3,0,140,100,5000,True,2,Top
@@ -337,7 +337,7 @@ saul_sample,param,sample,date,time,tank_side,of_start,no_start,fps,adj_top_of,ad
 20191114_0937_iCab_L_A__open_field__q4,no_bg_sub_area_min_10_int_max_150,20191114_0937_iCab_L_A,20191114,937,L,100,13941,24,-11,-11,5,5,14500,28341,open_field,q4,0,150,10,5000,False,2,NA
 20191114_0952_4-1_R_A__novel_object__q1,int_max_160_area_min_25,20191114_0952_4-1_R_A,20191114,952,R,1930,22400,30,-3,-3,-2,-2,19930,40400,novel_object,q1,0,160,25,5000,True,2,Bottom
 20191114_0952_4-1_R_A__novel_object__q2,int_max_140,20191114_0952_4-1_R_A,20191114,952,R,1930,22400,30,-3,-3,-2,-2,19930,40400,novel_object,q2,0,140,100,5000,True,2,Top
-20191114_0952_4-1_R_A__novel_object__q3,int_max_160_area_min_25,20191114_0952_4-1_R_A,20191114,952,R,1930,22400,30,-3,-3,-2,-2,19930,40400,novel_object,q3,0,160,25,5000,True,2,Right
+20191114_0952_4-1_R_A__novel_object__q3,int_max_160_area_min_25,20191114_0952_4-1_R_A,20191114,952,R,1930,22400,30,-3,-3,-2,-2,19930,40400,novel_object,q3,0,125,25,1000,True,2,Right
 20191114_0952_4-1_R_A__novel_object__q4,no_bg_sub,20191114_0952_4-1_R_A,20191114,952,R,1930,22400,30,-3,-3,-2,-2,19930,40400,novel_object,q4,0,170,150,2000,False,2,Bottom
 20191114_0952_4-1_R_A__open_field__q1,no_bg_sub_area_min_10,20191114_0952_4-1_R_A,20191114,952,R,1930,22400,30,-3,-3,-2,-2,19930,40400,open_field,q1,0,170,10,5000,False,2,Top
 20191114_0952_4-1_R_A__open_field__q2,no_bg_sub_area_min_10,20191114_0952_4-1_R_A,20191114,952,R,1930,22400,30,-3,-3,-2,-2,19930,40400,open_field,q2,0,170,10,5000,False,2,Top
@@ -689,7 +689,7 @@ saul_sample,param,sample,date,time,tank_side,of_start,no_start,fps,adj_top_of,ad
 20191115_1642_14-1_R_B__open_field__q4,no_bg_sub_area_min_10,20191115_1642_14-1_R_B,20191115,1642,R,1594,20764,30,-4,-4,-8,-8,19594,38764,open_field,q4,0,170,10,5000,False,2,Left
 20191116_1039_18-2_L_B__novel_object__q1,no_bg_sub,20191116_1039_18-2_L_B,20191116,1039,L,1484,20721,29,-17,-17,0,0,18884,38121,novel_object,q1,0,170,150,2000,False,2,Top
 20191116_1039_18-2_L_B__novel_object__q2,no_bg_sub,20191116_1039_18-2_L_B,20191116,1039,L,1484,20721,29,-17,-17,0,0,18884,38121,novel_object,q2,0,170,150,2000,False,2,Right
-20191116_1039_18-2_L_B__novel_object__q3,area_min_25,20191116_1039_18-2_L_B,20191116,1039,L,1484,20721,29,-17,-17,0,0,18884,38121,novel_object,q3,0,200,25,5000,True,2,Bottom
+20191116_1039_18-2_L_B__novel_object__q3,area_min_25,20191116_1039_18-2_L_B,20191116,1039,L,1484,20721,29,-17,-17,0,0,18884,38121,novel_object,q3,0,144,40,400,False,2,Bottom
 20191116_1039_18-2_L_B__novel_object__q4,int_max_150,20191116_1039_18-2_L_B,20191116,1039,L,1484,20721,29,-17,-17,0,0,18884,38121,novel_object,q4,0,150,100,5000,True,2,Top
 20191116_1039_18-2_L_B__open_field__q1,no_bg_sub_area_min_10_int_max_150,20191116_1039_18-2_L_B,20191116,1039,L,1484,20721,29,-17,-17,0,0,18884,38121,open_field,q1,0,150,10,5000,False,2,Top
 20191116_1039_18-2_L_B__open_field__q2,no_bg_sub_area_min_10_int_max_150,20191116_1039_18-2_L_B,20191116,1039,L,1484,20721,29,-17,-17,0,0,18884,38121,open_field,q2,0,150,10,5000,False,2,Bottom
@@ -1106,7 +1106,7 @@ saul_sample,param,sample,date,time,tank_side,of_start,no_start,fps,adj_top_of,ad
 20191118_1214_39-1_L_B__novel_object__q1,no_bg_sub,20191118_1214_39-1_L_B,20191118,1214,L,1102,20551,30,-16,-16,2,2,19102,38551,novel_object,q1,0,170,150,2000,False,2,Bottom
 20191118_1214_39-1_L_B__novel_object__q2,int_max_160_area_min_25,20191118_1214_39-1_L_B,20191118,1214,L,1102,20551,30,-16,-16,2,2,19102,38551,novel_object,q2,0,160,25,5000,True,2,Bottom
 20191118_1214_39-1_L_B__novel_object__q3,int_max_160_area_min_25,20191118_1214_39-1_L_B,20191118,1214,L,1102,20551,30,-16,-16,2,2,19102,38551,novel_object,q3,0,160,25,5000,True,2,Right
-20191118_1214_39-1_L_B__novel_object__q4,no_bg_sub_int_max_160,20191118_1214_39-1_L_B,20191118,1214,L,1102,20551,30,-16,-16,2,2,19102,38551,novel_object,q4,0,160,150,2000,False,2,Top
+20191118_1214_39-1_L_B__novel_object__q4,no_bg_sub_int_max_160,20191118_1214_39-1_L_B,20191118,1214,L,1102,20551,30,-16,-16,2,2,19102,38551,novel_object,q4,0,140,150,1000,False,2,Top
 20191118_1214_39-1_L_B__open_field__q1,no_bg_sub_area_min_10_int_max_150,20191118_1214_39-1_L_B,20191118,1214,L,1102,20551,30,-16,-16,2,2,19102,38551,open_field,q1,0,150,10,5000,False,2,Bottom
 20191118_1214_39-1_L_B__open_field__q2,no_bg_sub_area_min_10,20191118_1214_39-1_L_B,20191118,1214,L,1102,20551,30,-16,-16,2,2,19102,38551,open_field,q2,0,170,10,5000,False,2,Right
 20191118_1214_39-1_L_B__open_field__q3,no_bg_sub_area_min_10_int_max_150,20191118_1214_39-1_L_B,20191118,1214,L,1102,20551,30,-16,-16,2,2,19102,38551,open_field,q3,0,150,10,5000,False,2,Top
@@ -1545,7 +1545,7 @@ saul_sample,param,sample,date,time,tank_side,of_start,no_start,fps,adj_top_of,ad
 20191121_1130_luzonensis_L_C__novel_object__q4,int_max_150,20191121_1130_luzonensis_L_C,20191121,1130,L,1695,21441,30,-19,-19,1,1,19695,39441,novel_object,q4,0,150,100,5000,True,2,Top
 20191121_1130_luzonensis_L_C__open_field__q1,no_bg_sub_area_min_10_int_max_150,20191121_1130_luzonensis_L_C,20191121,1130,L,1695,21441,30,-19,-19,1,1,19695,39441,open_field,q1,0,150,10,5000,False,2,Top
 20191121_1130_luzonensis_L_C__open_field__q2,no_bg_sub_area_min_10,20191121_1130_luzonensis_L_C,20191121,1130,L,1695,21441,30,-19,-19,1,1,19695,39441,open_field,q2,0,170,10,5000,False,2,Top
-20191121_1130_luzonensis_L_C__open_field__q3,no_bg_sub_area_min_10,20191121_1130_luzonensis_L_C,20191121,1130,L,1695,21441,30,-19,-19,1,1,19695,39441,open_field,q3,0,170,10,5000,False,2,Right
+20191121_1130_luzonensis_L_C__open_field__q3,no_bg_sub_area_min_10,20191121_1130_luzonensis_L_C,20191121,1130,L,1695,21441,30,-19,-19,1,1,19695,39441,open_field,q3,0,200,100,1000,True,2,Right
 20191121_1130_luzonensis_L_C__open_field__q4,no_bg_sub_area_min_10,20191121_1130_luzonensis_L_C,20191121,1130,L,1695,21441,30,-19,-19,1,1,19695,39441,open_field,q4,0,170,10,5000,False,2,Right
 20191121_1147_luzonensis_R_C__novel_object__q1,int_max_160_area_min_25,20191121_1147_luzonensis_R_C,20191121,1147,R,1678,20554,30,-2,-2,-2,-2,19678,38554,novel_object,q1,0,160,25,5000,True,2,Bottom
 20191121_1147_luzonensis_R_C__novel_object__q2,int_max_150,20191121_1147_luzonensis_R_C,20191121,1147,R,1678,20554,30,-2,-2,-2,-2,19678,38554,novel_object,q2,0,150,100,5000,True,2,Top

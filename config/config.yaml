@@ -30,6 +30,8 @@ opencv:
 idtrackerai:
     # NOTE: Dockerfile for this container: workflow/envs/idtrackerai/Dockerfile
     docker://saulpierottiebi/idtrackerai_cpu_gui:latest
-
-
+rocker_tidyverse:
+    docker://rocker/tidyverse:4.1.2
+R_4.2.0:
+    /hps/nobackup/birney/users/ian/containers/MIKK_F0_tracking/R_4.2.0.sif
 

@@ -1,6 +1,8 @@
 include: "rules/00_common.smk"
 include: "rules/01_pre-processing.smk"
 include: "rules/02_tracking.smk"
+include: "rules/03_qc.smk"
+include: "rules/04_hmm.smk"
 
 ##### Target rules #####
 
@@ -30,21 +32,41 @@ rule all:
 ######################
 ## 02_tracking.smk
 ######################
-# track_videos
-        expand(rules.track_videos.output,
+#        expand(rules.track_videos.output,
+#                zip,
+#                assay = ASSAYS_ZIP,
+#                sample = SAMPLES_ZIP,
+#                quadrant = QUADRANTS_ZIP       
+#        ),
+######################
+## 03_qc.smk
+######################
+#        expand(rules.assign_ref_test.output,
+#                zip,
+#                assay = ASSAYS_ZIP,
+#                sample = SAMPLES_ZIP,
+#                quadrant = QUADRANTS_ZIP    
+#        ),
+        rules.tracking_success.output,
+######################
+## 04_hmm.smk
+######################
+        expand(rules.movement_metrics.output,
                 zip,
                 assay = ASSAYS_ZIP,
                 sample = SAMPLES_ZIP,
-                quadrant = QUADRANTS_ZIP       
+                quadrant = QUADRANTS_ZIP,
+                interval = [0.08] * len(ASSAYS_ZIP)
+        ), 
+        expand(rules.merge_csvs.output,
+                interval = 0.08
         ),
-## trajectories_to_csv
-#        expand(os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories/trajectories.trajectories.csv"),
-#                zip,
-#                assay = ASSAYS,
-#                sample = SAMPLES,
-#                quadrant = QUADRANTS         
-#        ),
-
-#####################
-
-
+        expand(rules.get_line_ranks_and_colours.output,
+                interval = 0.08
+        ),
+        expand(rules.coloured_trails_labels.output,
+                assay = ASSAYS_ZIP,
+                sample = SAMPLES_ZIP,
+                quadrant = QUADRANTS_ZIP,
+                interval = [0.08] * len(ASSAYS_ZIP)
+        ),

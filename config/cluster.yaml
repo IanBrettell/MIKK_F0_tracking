@@ -1,5 +1,5 @@
 __default__:
-  memory: 5000
+  memory: "{resources.mem_mb}"
   n: 1
   name: "{rule}.{wildcards}"
   queue: short
@@ -7,7 +7,3 @@ __default__:
 # 01_pre-processing.smk
 copy_videos:
   queue: datamover
-# 02_tracking.smk
-track_videos:
-  memory: "{resources.mem_mb}"
-  #queue: "bigmem"

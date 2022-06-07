@@ -67,9 +67,13 @@ rule track_videos:
     input:
         rules.split_videos.output
     output:
-        os.path.join(
+        trajectories = os.path.join(
             config["working_dir"], 
             "split/{assay}/{sample}/session_{sample}_{quadrant}/trajectories/trajectories.npy"
+        ),
+        video_obj = os.path.join(
+            config["working_dir"],
+            "split/{assay}/{sample}/session_{sample}_{quadrant}/video_object.npy"
         ),
     log:
         os.path.join(
@@ -85,7 +89,7 @@ rule track_videos:
         area_floor = get_area_floor,
         area_ceiling = get_area_ceiling,
     resources:
-        mem_mb = lambda wildcards, attempt: attempt * 10000
+        mem_mb = lambda wildcards, attempt: attempt * 20000
     container:
         config["idtrackerai"]
     shell:
@@ -101,28 +105,17 @@ rule track_videos:
                 2> {log}
         """
 
-# Convert numpy arrays to .csv files
-rule trajectories_to_csv:
-    input:
-        trajectories = rules.track_videos.output,
-        script = "workflow/scripts/trajectories_to_csv.py"
-    output:
-        os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories/trajectories.trajectories.csv")
-    log:
-        os.path.join(config["working_dir"], "logs/trajectories_to_csv/{assay}/{sample}/{quadrant}.log"),
-    params:
-        in_path = os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}")
-    shell:
-        """
-        python {input.script} {params.in_path}
-        """
-
-def get_final_csvs(wildcards):
-    # Get path of csv files
-    traj_wo_gaps_file = os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories_wo_gaps/trajectories_wo_gaps.trajectories.csv")
-    traj_file = os.path.join(config["data_store_dir"], "split/{assay}/session_{sample}_{quadrant}/trajectories/trajectories.trajectories.csv")
-    # If there is no "without gaps" file, return the 
+def get_trajectories_file(wildcards):
+    # Get path of trajectories files
+    traj_wo_gaps_file = os.path.join(
+        config["working_dir"],
+        "split/{assay}/{sample}/session_{sample}_{quadrant}/trajectories_wo_gaps/trajectories_wo_gaps.npy")
+    traj_file = os.path.join(
+        config["working_dir"],
+        "split/{assay}/{sample}/session_{sample}_{quadrant}/trajectories/trajectories.npy")
+    # If there is no `trajectories_wo_gaps.npy` file, return the `trajectories.npy` file
     if os.path.exists(traj_wo_gaps_file):
         return(traj_wo_gaps_file)
     else:
         return(traj_file)
+
