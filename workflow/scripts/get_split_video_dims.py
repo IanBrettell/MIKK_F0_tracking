@@ -25,9 +25,9 @@ import cv2 as cv
 # Get variables
 
 ## Debug
-IN = ["/hps/nobackup/birney/users/ian/pilot/split/open_field/20190611_1331_icab_icab_R_q1.avi",
-      "/hps/nobackup/birney/users/ian/pilot/split/open_field/20190611_1331_icab_icab_R_q2.avi",
-      "/hps/nobackup/birney/users/ian/pilot/split/open_field/20190611_1331_icab_icab_R_q3.avi"]
+IN = ["/hps/nobackup/birney/users/ian/MIKK_F0_tracking/split/open_field/20191114_1129_32-2_R_A/q1.avi",
+      "/hps/nobackup/birney/users/ian/MIKK_F0_tracking/split/open_field/20191114_1129_32-2_R_A/q2.avi",
+      "/hps/nobackup/birney/users/ian/MIKK_F0_tracking/split/open_field/20191114_1129_32-2_R_A/q3.avi"]
 
 ## True
 IN = snakemake.input
@@ -49,12 +49,12 @@ for VID in IN:
     wid = str(int(cap.get(cv.CAP_PROP_FRAME_WIDTH)))
     hei = str(int(cap.get(cv.CAP_PROP_FRAME_HEIGHT)))
     n_frames = str(int(cap.get(cv.CAP_PROP_FRAME_COUNT)))
-    # get sample
-    sample = '_'.join(os.path.basename(VID).replace('.avi', '').split('_')[:-1])
     # get quadrant
-    quadrant = os.path.basename(VID).replace('.avi', '').split('_')[-1]
+    quadrant = os.path.basename(VID).replace('.avi', '')
+    # get sample
+    sample = VID.split('/')[-2]
     # get assay
-    assay = os.path.dirname(VID).split('/')[-1]
+    assay = VID.split('/')[-3]
     # compose full line
     line_to_write = ','.join([assay,sample,quadrant,wid,hei,n_frames]) + '\n'
     file.writelines(line_to_write)

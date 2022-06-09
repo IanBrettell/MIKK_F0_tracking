@@ -38,7 +38,6 @@ IN = ["/hps/nobackup/birney/users/ian/pilot/tracked/novel_object/20190616_1045_i
 ## True
 IN = snakemake.input
 OUT = snakemake.output[0]
-FPS = int(snakemake.params.fps)
 
 # Sort order to ensure q1 is first, etc.
 
@@ -50,6 +49,10 @@ cap1 = cv.VideoCapture(IN[0])
 cap2 = cv.VideoCapture(IN[1])
 cap3 = cv.VideoCapture(IN[2])
 cap4 = cv.VideoCapture(IN[3])
+
+# Get FPS
+
+FPS = int(cap1.get(cv.CAP_PROP_FPS))
 
 ## Set up fourcc
 
