@@ -29,7 +29,7 @@ rule all:
 #                sample = SAMPLES_ZIP,
 #                quadrant = QUADRANTS_ZIP
 #        ),
-        rules.get_split_video_dims.output,
+#        rules.get_split_video_dims.output,
 ######################
 ## 02_tracking.smk
 ######################
@@ -52,16 +52,19 @@ rule all:
 ######################
 ## 04_hmm.smk
 ######################
-#        expand(rules.movement_metrics.output,
-#                zip,
-#                assay = ASSAYS_ZIP,
-#                sample = SAMPLES_ZIP,
-#                quadrant = QUADRANTS_ZIP,
-#                interval = [0.08] * len(ASSAYS_ZIP)
-#        ), 
-#        expand(rules.merge_csvs.output,
-#                interval = 0.08
-#        ),
+        expand(rules.movement_metrics.output,
+                zip,
+                assay = ASSAYS_ZIP_TRK_INT,
+                sample = SAMPLES_ZIP_TRK_INT,
+                quadrant = QUADRANTS_ZIP_TRK_INT,                
+                interval = INTERVALS_ZIP_TRK_INT
+        ),
+        expand(rules.merge_csvs.output,
+                interval = config["seconds_interval"]
+        ),
+        expand(rules.send_to_shared_folder.output,
+                interval = config["seconds_interval"]
+        ),
 #        expand(rules.get_line_ranks_and_colours.output,
 #                interval = 0.08
 #        ),
@@ -81,13 +84,14 @@ rule all:
 #                sample = ["20191112_1236_18-2_L_A","20191116_1039_18-2_L_B","20191119_1459_18-2_R_C","20191113_1557_22-1_L_A","20191117_1122_22-1_L_B","20191119_1552_22-1_R_C"],
 #                interval = 0.08
 #        ),
-        expand(rules.compile_two_panel_vid.output,
-                assay = "open_field",
-                sample = ["20191112_1236_18-2_L_A","20191116_1039_18-2_L_B","20191119_1459_18-2_R_C","20191113_1557_22-1_L_A","20191117_1122_22-1_L_B","20191119_1552_22-1_R_C"],
-                interval = 0.08
-        ),
-        expand(rules.two_panel_short.output,
-                assay = "open_field",
-                sample = ["20191112_1236_18-2_L_A","20191116_1039_18-2_L_B","20191119_1459_18-2_R_C","20191113_1557_22-1_L_A","20191117_1122_22-1_L_B","20191119_1552_22-1_R_C"],
-                interval = 0.08
-        ),       
+#        expand(rules.compile_two_panel_vid.output,
+#                assay = "open_field",
+#                sample = ["20191112_1236_18-2_L_A","20191116_1039_18-2_L_B","20191119_1459_18-2_R_C","20191113_1557_22-1_L_A","20191117_1122_22-1_L_B","20191119_1552_22-1_R_C"],
+#                interval = 0.08
+#        ),
+#        expand(rules.two_panel_short.output,
+#                assay = "open_field",
+#                sample = ["20191112_1236_18-2_L_A","20191116_1039_18-2_L_B","20191119_1459_18-2_R_C","20191113_1557_22-1_L_A","20191117_1122_22-1_L_B","20191119_1552_22-1_R_C"],
+#                interval = 0.08
+#        ),
+

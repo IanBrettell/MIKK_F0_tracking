@@ -4,7 +4,7 @@ log <- file(snakemake@log[[1]], open="wt")
 sink(log)
 sink(log, type = "message")
 
-# Load libraries
+# Load libraries
 
 library(tidyverse)
 

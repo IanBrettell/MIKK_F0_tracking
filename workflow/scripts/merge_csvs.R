@@ -11,7 +11,7 @@ library(tidyverse)
 # Get variables
 
 ## Debug
-IN_FILES = list("/hps/nobackup/birney/users/ian/MIKK_F0_tracking/with_metrics/novel_object/20191120_1026_84-2_R_C/q1/0.08.csv",
+IN_FILES = list("/hps/nobackup/birney/users/ian/MIKK_F0_tracking/with_metrics/novel_object/20191121_1454_iCab_L_C/q1/0.08.csv",
                 "/hps/nobackup/birney/users/ian/MIKK_F0_tracking/with_metrics/novel_object/20191120_1026_84-2_R_C/q2/0.08.csv")
 
 ## True
@@ -44,10 +44,14 @@ out = purrr::map(IN_FILES, function(IN_FILE){
                assay1, assay2,
                sep = "_",
                remove = T) %>% 
-  # create "ref_fish" column
-  dplyr::mutate(ref_fish = "iCab") %>% 
+  # create "ref_fish", `pat_line` and `mat_line` columns,
+  dplyr::mutate(ref_fish = "iCab",
+                pat_line = dplyr::case_when(fish == "ref" ~ ref_fish,
+                                            fish == "test" ~ test_fish),
+                mat_line = dplyr::case_when(fish == "ref" ~ ref_fish,
+                                            fish == "test" ~ test_fish)) %>%
   # remove unnecessary columns
-  dplyr::select(-c(x_lag1, y_lag1, x_lag2, y_lag2, distance_b)) %>% 
+  dplyr::select(-c(x_lag1, y_lag1, x_lag2, y_lag2, distance_b, block)) %>% 
   # order columns
   dplyr::select(assay, date, time, ref_fish, test_fish, dplyr::everything()) %>% 
   # drop NAs (they don't work with the HMM)
