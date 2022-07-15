@@ -69,6 +69,9 @@ pal_dict['iCab_test'] = '#AB7535'
 
 REF = "iCab"
 TEST = SAMPLE.split('_')[2]
+# If it is an outbred fish, e.g. outbred-A-2, make it just "outbred"
+if 'outbred' in TEST_FISH:
+    TEST_FISH = 'outbred'
 
 if REF == TEST:
     line_dict = {

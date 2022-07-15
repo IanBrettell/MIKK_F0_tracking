@@ -84,7 +84,9 @@ REF_LOC = snakemake.params.ref_loc
 
 # Get identity of test fish
 TEST_FISH = SAMPLE.split('_')[2]
-
+# If it is an outbred fish, e.g. outbred-A-2, make it just "outbred"
+if 'outbred' in TEST_FISH:
+    TEST_FISH = 'outbred'
 
 # From `main()`
 
