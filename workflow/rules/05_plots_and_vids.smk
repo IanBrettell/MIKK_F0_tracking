@@ -139,3 +139,90 @@ rule two_panel_short:
     script:
         "../scripts/two_panel_short.py"         
 
+# Creates point/path plots for each ref/test fish
+# With each point coloured by HMM state
+rule hmm_path_frames_to_vid:
+    input:
+        hmm = config["hmm_out"],
+        dims = rules.get_split_video_dims.output,
+    output:
+        os.path.join(
+            config["working_dir"],
+            "hmm_path_vids/{interval}/dist_angle/15/{assay}/{sample}_{ref_test}.avi"
+        ),
+    log:
+        os.path.join(
+            config["working_dir"],
+            "logs/hmm_path_frames_to_vid/{interval}/dist_angle/15/{assay}/{sample}_{ref_test}.log"
+        ),
+    params:
+        assay = "{assay}",
+        sample = "{sample}",
+        ref_test = "{ref_test}",
+        fps = get_fps,
+        tmpdir = os.path.join(
+            config["working_dir"],
+            "tmp_frames/0.05/dist_angle/15"
+        ),
+    resources:
+        mem_mb = 20000,
+    container:
+        config["opencv"]
+    script:
+        "../scripts/hmm_path_frames_to_vid.py"
+
+# Create four-panel videos with labelled videos (TL), path videos (TR),
+# and HMM path videos for test (BL) and ref (BR) fishes.
+rule compile_four_panel_vid:
+    input:
+        labels = rules.stitch_tracked_vids.output[0],
+        paths = rules.path_frames_to_vid.output[0],
+        hmm_ref = os.path.join(
+            config["working_dir"],
+            "hmm_path_vids/{interval}/dist_angle/15/{assay}/{sample}_ref.avi"
+        ),
+        hmm_test = os.path.join(
+            config["working_dir"],
+            "hmm_path_vids/{interval}/dist_angle/15/{assay}/{sample}_test.avi"
+        ),
+    output:
+        os.path.join(
+            config["working_dir"],
+            "four_panel_vids/{interval}/dist_angle/15/{assay}/{sample}.avi"
+        ),
+    log:
+        os.path.join(
+            config["working_dir"],
+            "logs/compile_four_panel_vid/{interval}/dist_angle/15/{assay}/{sample}.log"
+        ),
+    params:
+        fps = get_fps,
+    resources:
+        mem_mb = 5000,
+    container:
+        config["opencv"]
+    script:
+        "../scripts/compile_four_panel_vid.py"
+
+# Shorten to 
+rule four_panel_short:
+    input:
+        rules.compile_four_panel_vid.output,
+    output:
+        avi = os.path.join(
+            config["working_dir"],
+            "four_panel_short_vids/{interval}/dist_angle/15/{assay}/{sample}.avi"
+        ),
+    log:
+        os.path.join(
+            config["working_dir"],
+            "logs/four_panel_short/{interval}/dist_angle/15/{assay}/{sample}.log"
+        ),
+    params:
+        tot_sec = 60,
+    resources:
+        mem_mb = 5000,
+    container:
+        config["opencv"]
+    script:
+        "../scripts/four_panel_short.py"    

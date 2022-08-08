@@ -31,8 +31,7 @@ def get_final_csvs(wildcards):
 # Get frames-per-second
 def get_fps(wildcards):
     fps = samples_df.loc[(samples_df['sample'] == wildcards.sample) & \
-                         (samples_df['assay'] == wildcards.assay) & \
-                         (samples_df['quadrant'] == wildcards.quadrant), \
+                         (samples_df['assay'] == wildcards.assay), \
                          'fps'].values[0]
     return(fps)
 

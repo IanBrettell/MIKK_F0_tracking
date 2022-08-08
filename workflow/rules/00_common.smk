@@ -56,6 +56,7 @@ samples_df = pd.read_csv(config["samples_long"])
 SAMPLES_ZIP = samples_df['sample']
 ASSAYS_ZIP = samples_df['assay']
 QUADRANTS_ZIP = samples_df['quadrant']
+REF_TEST = ["ref", "test"]
 
 # Get lists of unique assay/sample (AS) combinations
 
@@ -77,6 +78,7 @@ zip_df = pd.DataFrame(
         'quadrant' : QUADRANTS_ZIP
     }
 )
+
 ## Read in .csv
 ts_df = pd.read_csv('config/tracking_success.csv')
 ## Filter for samples with < 85% tracking success
@@ -94,6 +96,7 @@ for i, row in ts_df.iterrows():
             ].index,
             inplace = True
     )
+
 ## Get filtered samples and assays
 SAMPLES_ZIP_TRK = zip_df['sample']
 ASSAYS_ZIP_TRK = zip_df['assay']
@@ -105,5 +108,4 @@ ASSAYS_ZIP_TRK_INT = list(ASSAYS_ZIP_TRK.values) * n_intervals
 QUADRANTS_ZIP_TRK_INT = list(QUADRANTS_ZIP_TRK.values) * n_intervals
 ## Multiply each element of `seconds_intervals` by length of original SAMPLES list
 INTERVALS_ZIP_TRK_INT = np.repeat(config["seconds_interval"], len(SAMPLES_ZIP_TRK_INT))
-
 

@@ -8,7 +8,6 @@ python
 import pandas as pd
 samples_df = pd.read_csv('config/samples_long.csv')
 
-samples_df = pd.read_csv(config["samples_long"])
 
 # Set variables
 

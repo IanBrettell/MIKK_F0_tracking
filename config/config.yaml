@@ -34,6 +34,8 @@ tmpdir:
     /hps/nobackup/birney/users/ian/tmp
 shared_dir:
     /hps/nobackup/birney/users/ian/MIKK_all
+hmm_out:
+    /hps/nobackup/birney/users/ian/MIKK_HMM/hmm_out_split/0.05/dist_angle/15/F0.csv
 ####################
 # Containers
 ####################
