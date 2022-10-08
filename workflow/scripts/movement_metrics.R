@@ -11,9 +11,9 @@ library(tidyverse)
 # Get variables
 
 # Debug
-#IN_FILE = "/nfs/research/birney/users/ian/pilot/final_tracks/novel_object/20190615_1549_icab_hni_L_q4.csv"
-#INTERVAL = 0.2
-#SOURCE_FILE = here::here("workflow/scripts/movement_metrics_source.R")
+IN_FILE = "/hps/nobackup/birney/users/ian/MIKK_F0_tracking/final_tracks/novel_object/20191113_1247_106-1_R_A/q1.csv"
+INTERVAL = 0.05
+SOURCE_FILE = here::here("workflow/scripts/movement_metrics_source.R")
 
 ## True
 IN_FILE = snakemake@input[[1]]

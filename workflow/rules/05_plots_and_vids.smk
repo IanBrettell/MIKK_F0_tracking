@@ -225,4 +225,87 @@ rule four_panel_short:
     container:
         config["opencv"]
     script:
-        "../scripts/four_panel_short.py"    
+        "../scripts/four_panel_short.py"
+
+# Pull single frame from path plots
+rule get_paths_frame_grab:
+    input:
+        paths = rules.path_frames_to_vid.output[0],
+    output:
+        fig = "book/figs/paths_frame_grabs/{interval}/dist_angle/15/{assay}/{sample}_{second}.png"
+    log:
+        os.path.join(
+            config["working_dir"],
+            "logs/paths_frame_grab/{interval}/dist_angle/15/{assay}/{sample}_{second}.log"
+        ),
+    params:
+        target_second = "{second}"
+    resources:
+        mem_mb = 500,
+    container:
+        config["opencv"]
+    script:
+        "../scripts/get_paths_frame_grab.py"
+
+rule combine_path_frames_per_sample:
+    input:
+        expand(rules.get_paths_frame_grab.output.fig,
+                interval = 0.05,
+                assay = "open_field",
+                sample = ["20191112_1236_18-2_L_A", "20191116_1039_18-2_L_B", "20191113_1557_22-1_L_A", "20191117_1122_22-1_L_B", "20191111_1558_10-1_L_A", "20191115_1633_10-1_L_B"],
+                second = 300            
+        ),
+    output:
+        png = "book/figs/paths_frame_compiled/0.05/dist_angle/15/open_field/path_plot_22-1_18-2_10-1_300.png",
+        pdf = "book/figs/paths_frame_compiled/0.05/dist_angle/15/open_field/path_plot_22-1_18-2_10-1_300.pdf"
+    log:
+        os.path.join(
+            config["working_dir"],
+            "logs/combine_path_frames_per_sample/0.05/dist_angle/15/open_field/22-1_18-2_10-1_300.log"
+        ),
+    resources:
+        mem_mb = 5000,
+    container:
+        config["R_4.2.0"]
+    script:
+        "../scripts/combine_path_frames_per_sample.R"    
+
+# Pull single frame from four-panel videos
+
+rule get_four_panel_frame_grab:
+    input:
+        paths = rules.compile_four_panel_vid.output[0],
+    output:
+        fig = "book/figs/four_panel_frame_grabs/{interval}/dist_angle/15/{assay}/{assay}_{sample}_{second}.png"
+    log:
+        os.path.join(
+            config["working_dir"],
+            "logs/get_four_panel_frame_grab/{interval}/dist_angle/15/{assay}/{sample}_{second}.log"
+        ),
+    params:
+        target_second = "{second}"
+    resources:
+        mem_mb = 500,
+    container:
+        config["opencv"]
+    script:
+        "../scripts/get_paths_frame_grab.py"
+
+rule four_panel_frame_grab_pdf:
+    input:
+        paths = rules.get_four_panel_frame_grab.output,
+    output:
+        pdf = "book/figs/four_panel_frame_grabs/{interval}/dist_angle/15/{assay}/{assay}_{sample}_{second}.pdf"
+    log:
+        os.path.join(
+            config["working_dir"],
+            "logs/four_panel_frame_grab_pdf/{interval}/dist_angle/15/{assay}/{sample}_{second}.log"
+        ),
+    params:
+        target_second = "{second}"
+    resources:
+        mem_mb = 500,
+    container:
+        config["R_4.2.0"]
+    script:
+        "../scripts/four_panel_frame_grab_pdf.R"        
